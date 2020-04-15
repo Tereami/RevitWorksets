@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InfosStorage>
+   <ConfigurationName>Test</ConfigurationName>
+   <worksetsByCategory>
+      <WorksetByCategory>
+	     <WorksetName>Опалубка</WorksetName>
+         <revitCategories>
+	        <BuiltInCategory>OST_Walls</BuiltInCategory>
+            <BuiltInCategory>OST_Floors</BuiltInCategory>
+	     </revitCategories>
+	  </WorksetByCategory>
+      <WorksetByCategory>
+	     <WorksetName>Общие уровни и сетки</WorksetName>
+         <revitCategories>
+	        <BuiltInCategory>OST_Grids</BuiltInCategory>
+	     </revitCategories>
+	  </WorksetByCategory>
+   </worksetsByCategory>
+   <worksetsByFamily>
+      <WorksetByFamily>
+	     <WorksetName>Арматура</WorksetName>
+		 <FamilyNames>
+		    <string>Семейство 1</string>
+			<string>Семейство 2</string>
+		 </FamilyNames>
+	  </WorksetByFamily>
+   </worksetsByFamily>
+</InfosStorage>
