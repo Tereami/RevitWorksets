@@ -102,7 +102,7 @@ namespace RevitWorksets
                     foreach (string familyName in families)
                     {
                         List<FamilyInstance> curFamIns = famIns
-                            .Where(f => f.Symbol.FamilyName == familyName)
+                            .Where(f => f.Symbol.FamilyName.StartsWith(familyName))
                             .ToList();
                         
                         foreach (FamilyInstance fi in curFamIns)
