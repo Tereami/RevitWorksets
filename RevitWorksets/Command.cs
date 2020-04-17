@@ -134,7 +134,7 @@ namespace RevitWorksets
                             ElementType elemType = doc.GetElement(typeId) as ElementType;
                             if (elemType == null) continue;
 
-                            if (elemType.Name == typeName)
+                            if (elemType.Name.StartsWith(typeName))
                             {
                                 WorksetBy.SetWorkset(elem, wset);
                             }
@@ -171,7 +171,9 @@ namespace RevitWorksets
                     if (linkFileType == null) continue;
                     if (linkFileType.IsNestedLink) continue;
 
-                    string linkWorksetName = "#" + rli.Name;
+                    string linkWorksetName1 = rli.Name.Split(':')[0];
+                    string linkWorksetName2 = linkWorksetName1.Substring(0, linkWorksetName1.Length - 5);
+                    string linkWorksetName = "#" + linkWorksetName2;
                     bool checkExists = WorksetTable.IsWorksetNameUnique(doc, linkWorksetName);
                     if (!checkExists) continue;
 
