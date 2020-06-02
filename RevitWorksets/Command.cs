@@ -54,7 +54,7 @@ namespace RevitWorksets
             {
                 storage = (InfosStorage)serializer.Deserialize(r);
             }
-
+            if (storage.LinkedFilesPrefix == null) storage.LinkedFilesPrefix = "#";
 
             using (Transaction t = new Transaction(doc))
             {
@@ -173,7 +173,7 @@ namespace RevitWorksets
 
                     string linkWorksetName1 = rli.Name.Split(':')[0];
                     string linkWorksetName2 = linkWorksetName1.Substring(0, linkWorksetName1.Length - 5);
-                    string linkWorksetName = "#" + linkWorksetName2;
+                    string linkWorksetName = storage.LinkedFilesPrefix + linkWorksetName2;
                     bool checkExists = WorksetTable.IsWorksetNameUnique(doc, linkWorksetName);
                     if (!checkExists) continue;
 
@@ -190,6 +190,17 @@ namespace RevitWorksets
                 }
 
                 t.Commit();
+            }
+
+            List<string> emptyWorksetsNames = WorksetTool.GetEmptyWorksets(doc);
+            if(emptyWorksetsNames.Count > 0)
+            {
+                string msg = "Обнаружены пустые рабочие наборы! Их можно удалить вручную:\n";
+                foreach(string s in emptyWorksetsNames)
+                {
+                    msg += s + "\n";
+                }
+                TaskDialog.Show("Отчёт", msg);
             }
 
             return Result.Succeeded;

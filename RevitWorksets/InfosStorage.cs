@@ -19,6 +19,7 @@ namespace RevitWorksets
     public class InfosStorage
     {
         public string ConfigurationName;
+        public string LinkedFilesPrefix;
 
         public List<WorksetByCategory> worksetsByCategory;
         public List<WorksetByFamily> worksetsByFamily;
