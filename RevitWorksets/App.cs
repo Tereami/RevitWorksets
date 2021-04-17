@@ -26,10 +26,10 @@ namespace RevitWorksets
         {
             assemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
-            string tabName = "Weandrevit";
+            string tabName = "BIM-STARTER TEST";
             try { application.CreateRibbonTab(tabName); } catch { }
 
-            string panelName = "Параметры";
+            string panelName = "Рабочие наборы";
             RibbonPanel panel = null;
             List<RibbonPanel> tryPanels = application.GetRibbonPanels(tabName).Where(i => i.Name == panelName).ToList();
             if (tryPanels.Count == 0)

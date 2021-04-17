@@ -13,6 +13,7 @@ Zuev Aleksandr, 2020, all rigths reserved.*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using Autodesk.Revit.DB;
 
 namespace RevitWorksets
@@ -23,24 +24,32 @@ namespace RevitWorksets
 
         public Workset GetWorkset(Document doc)
         {
+            Workset wset = WorksetBy.GetOrCreateWorkset(doc, WorksetName);
+            return wset;
+        }
+
+        public static Workset GetOrCreateWorkset(Document doc, string worksetName)
+        {
             IList<Workset> userWorksets = new FilteredWorksetCollector(doc)
                 .OfKind(WorksetKind.UserWorkset)
                 .ToWorksets();
 
-            bool checkNotExists = WorksetTable.IsWorksetNameUnique(doc, WorksetName);
+            bool checkNotExists = WorksetTable.IsWorksetNameUnique(doc, worksetName);
 
             if (!checkNotExists)
             {
+                Debug.WriteLine("Workset exists: " + worksetName);
                 Workset wset = new FilteredWorksetCollector(doc)
                 .OfKind(WorksetKind.UserWorkset)
                 .ToWorksets()
-                .Where(w => w.Name == WorksetName)
+                .Where(w => w.Name == worksetName)
                 .First();
                 return wset;
             }
             else
             {
-                Workset wset = Workset.Create(doc, WorksetName);
+                Debug.WriteLine("Create workset: " + worksetName);
+                Workset wset = Workset.Create(doc, worksetName);
                 return wset;
             }
         }
@@ -48,6 +57,7 @@ namespace RevitWorksets
 
         public static void SetWorkset(Element elem, Workset w)
         {
+            Debug.WriteLine("Set workset: " + w.Name + " for elem id " + elem.Id.IntegerValue);
             Parameter wsparam = elem.get_Parameter(BuiltInParameter.ELEM_PARTITION_PARAM);
             if (wsparam == null) return;
             if (wsparam.IsReadOnly) return;
@@ -57,11 +67,13 @@ namespace RevitWorksets
             if (elemNonGroup)
             {
                 wsparam.Set(w.Id.IntegerValue);
+                Debug.WriteLine("Set workset success");
             }
             else
             {
                 Group gr = elem.Document.GetElement(elem.GroupId) as Group;
                 SetWorkset(gr, w);
+                Debug.WriteLine("Elem is in group; set workset for group: " + gr.Name);
             }
         }
     }

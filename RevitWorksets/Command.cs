@@ -10,16 +10,16 @@ as long as you credit the author by linking back and license your new creations 
 This code is provided 'as is'. Author disclaims any implied warranty.
 Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
+#region usings
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Autodesk.Revit.DB; 
 using Autodesk.Revit.UI;
-using Autodesk.Revit.ApplicationServices;
 using System.IO;
 using System.Xml;
+#endregion
 
 namespace RevitWorksets
 {
@@ -28,17 +28,22 @@ namespace RevitWorksets
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            Debug.Listeners.Clear();
+            Debug.Listeners.Add(new RbsLogger.Logger("Worksets"));
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
             if(!doc.IsWorkshared)
             {
                 message = "Файл не является файлом совместной работы";
+                Debug.WriteLine("File os not workshared document");
                 return Result.Failed; ;
             }
 
             //считываю список рабочих наборов
             string dllPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string folder = System.IO.Path.GetDirectoryName(dllPath);
+            string dllFolder = System.IO.Path.GetDirectoryName(dllPath);
+            string folder = System.IO.Path.Combine(dllPath, "RevitWorksets_data");
+            Debug.WriteLine("Default folder for xmls: " + folder);
 
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
             dialog.InitialDirectory = folder;
@@ -46,6 +51,7 @@ namespace RevitWorksets
             dialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
             if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK) return Result.Cancelled;
             string xmlFilePath = dialog.FileName;
+            Debug.WriteLine("Xml path: " + xmlFilePath);
 
             InfosStorage storage = new InfosStorage();
             System.Xml.Serialization.XmlSerializer serializer =
@@ -54,15 +60,23 @@ namespace RevitWorksets
             {
                 storage = (InfosStorage)serializer.Deserialize(r);
             }
-            if (storage.LinkedFilesPrefix == null) storage.LinkedFilesPrefix = "#";
+            
+            if(storage == null)
+            {
+                string errormsg = "Unable to deserialize: " + xmlFilePath.Replace("\\", " \\");
+                Debug.WriteLine(errormsg);
+                throw new Exception(errormsg);
+            }
+            Debug.WriteLine("Deserialize success");
 
             using (Transaction t = new Transaction(doc))
             {
                 t.Start("Создание рабочих наборов");
 
-                //назначаю рабочие наборы в случае, если указана категория
+                Debug.WriteLine("Start worksets by category");
                 foreach (WorksetByCategory wb in storage.worksetsByCategory)
                 {
+                    Debug.WriteLine("Current workset: " + wb.WorksetName);
                     Workset wset = wb.GetWorkset(doc);
                     List<BuiltInCategory> cats = wb.revitCategories;
                     if (cats == null) continue;
@@ -83,21 +97,21 @@ namespace RevitWorksets
                     }
                 }
 
-                //назначаю рабочие наборы по именам семейств
+                Debug.WriteLine("Start worksets by family names");
                 List<FamilyInstance> famIns = new FilteredElementCollector(doc)
                         .WhereElementIsNotElementType()
                         .OfClass(typeof(FamilyInstance))
                         .Cast<FamilyInstance>()
                         .ToList();
+                Debug.WriteLine("Family instances found: " + famIns.Count);
                 foreach (WorksetByFamily wb in storage.worksetsByFamily)
                 {
+                    Debug.WriteLine("Current workset:" + wb.WorksetName);
                     Workset wset = wb.GetWorkset(doc);
 
                     List<string> families = wb.FamilyNames;
                     if (families == null) continue;
                     if (families.Count == 0) continue;
-
-                    
 
                     foreach (string familyName in families)
                     {
@@ -112,14 +126,16 @@ namespace RevitWorksets
                     }
                 }
 
-                //назначаю рабочие наборы по именам типов
+                Debug.WriteLine("Start worksets by type names");
                 List<Element> allElems = new FilteredElementCollector(doc)
                             .WhereElementIsNotElementType()
                             .Cast<Element>()
                             .ToList();
+                Debug.WriteLine("Elements found: " + allElems.Count);
 
                 foreach (WorksetByType wb in storage.worksetsByType)
                 {
+                    Debug.WriteLine("Current workset:" + wb.WorksetName);
                     Workset wset = wb.GetWorkset(doc);
                     List<string> typeNames = wb.TypeNames;
                     if (typeNames == null) continue;
@@ -133,6 +149,7 @@ namespace RevitWorksets
                             if (typeId == null || typeId == ElementId.InvalidElementId) continue;
                             ElementType elemType = doc.GetElement(typeId) as ElementType;
                             if (elemType == null) continue;
+                            Debug.WriteLine("Element id: " + elem.Id.IntegerValue + ", TypeName: " + elemType.Name);
 
                             if (elemType.Name.StartsWith(typeName))
                             {
@@ -141,52 +158,64 @@ namespace RevitWorksets
                         }
                     }
                 }
-
-                //назначаю рабочие наборы по значению параметров
-                foreach(WorksetByParameter wb in storage.worksetsByParameter)
+                
+                if(storage.worksetByParameter != null)
                 {
-                    Workset wset = wb.GetWorkset(doc);
-                    string paramName = wb.ParameterName;
-                    string paramValue = wb.ParameterValue;
-
-                    List<Element> elemsFilterByParam = allElems
-                        .Where(e => e.LookupParameter(paramName).AsString().Equals(paramValue)).ToList();
-
-                    foreach(Element elem in elemsFilterByParam)
+                    Debug.WriteLine("Start worksets by parameters");
+                    string paramName = storage.worksetByParameter.ParameterName;
+                    foreach (Element elem in allElems)
                     {
-                        WorksetBy.SetWorkset(elem, wset);
+                        Parameter p = elem.LookupParameter(paramName);
+                        if (p == null) continue;
+                        if (!p.HasValue) continue;
+                        if(p.StorageType != StorageType.String)
+                        {
+                            string errmsg = "Parameter is not string: " + paramName;
+                            Debug.WriteLine(errmsg);
+                            throw new Exception(errmsg);
+                        }
+                        string wsetParamValue = p.AsString();
+                        Workset wsetByparamval = WorksetBy.GetOrCreateWorkset(doc, wsetParamValue);
+                        WorksetBy.SetWorkset(elem, wsetByparamval);
                     }
                 }
 
 
-                //назначаю рабочие наборы для связанных файлов
-                List<RevitLinkInstance> links = new FilteredElementCollector(doc)
-                    .OfClass(typeof(RevitLinkInstance))
-                    .Cast<RevitLinkInstance>()
-                    .ToList();
-
-                foreach(RevitLinkInstance rli in links)
+                if (storage.worksetByLink != null)
                 {
-                    RevitLinkType linkFileType = doc.GetElement(rli.GetTypeId()) as RevitLinkType;
-                    if (linkFileType == null) continue;
-                    if (linkFileType.IsNestedLink) continue;
+                    WorksetByLink wsetbylink = storage.worksetByLink;
+                    Debug.WriteLine("Worksets for link files");
+                    List<RevitLinkInstance> links = new FilteredElementCollector(doc)
+                        .OfClass(typeof(RevitLinkInstance))
+                        .Cast<RevitLinkInstance>()
+                        .ToList();
+                    Debug.WriteLine("Links found: " + links.Count);
 
-                    string linkWorksetName1 = rli.Name.Split(':')[0];
-                    string linkWorksetName2 = linkWorksetName1.Substring(0, linkWorksetName1.Length - 5);
-                    string linkWorksetName = storage.LinkedFilesPrefix + linkWorksetName2;
-                    bool checkExists = WorksetTable.IsWorksetNameUnique(doc, linkWorksetName);
-                    if (!checkExists) continue;
+                    foreach (RevitLinkInstance rli in links)
+                    {
+                        Debug.WriteLine("Current link: " + rli.Name);
+                        RevitLinkType linkFileType = doc.GetElement(rli.GetTypeId()) as RevitLinkType;
+                        if (linkFileType == null)
+                        {
+                            Debug.WriteLine("LinkType is invalid");
+                            continue;
+                        }
+                        if (linkFileType.IsNestedLink)
+                        {
+                            Debug.WriteLine("It is nested link");
+                            continue;
+                        }
+                        char separator = wsetbylink.separator[0];
+                        string linkWorksetName1 = linkFileType.Name.Split(separator)[wsetbylink.partNumberAfterSeparator];
+                        string linkWorksetName2 = linkWorksetName1
+                            .Substring(wsetbylink.ignoreFirstCharsAfterSeparation, linkWorksetName1.Length - wsetbylink.ignoreLastCharsAfterSeparation);
+                        string linkWorksetName = wsetbylink.prefixForLinkWorksets + linkWorksetName2;
+                        Debug.WriteLine("Workset name: " + linkWorksetName);
 
-                    Workset.Create(doc, linkWorksetName);
-
-                    Workset linkWorkset = new FilteredWorksetCollector(doc)
-                        .OfKind(WorksetKind.UserWorkset)
-                        .ToWorksets()
-                        .Where(w => w.Name == linkWorksetName)
-                        .First();
-
-                    WorksetBy.SetWorkset(rli, linkWorkset);
-                    WorksetBy.SetWorkset(linkFileType, linkWorkset);
+                        Workset linkWorkset = WorksetBy.GetOrCreateWorkset(doc, linkWorksetName);
+                        WorksetBy.SetWorkset(rli, linkWorkset);
+                        WorksetBy.SetWorkset(linkFileType, linkWorkset);
+                    }
                 }
 
                 t.Commit();
@@ -200,9 +229,10 @@ namespace RevitWorksets
                 {
                     msg += s + "\n";
                 }
+                Debug.WriteLine("Empty worksets found: " + msg);
                 TaskDialog.Show("Отчёт", msg);
             }
-
+            Debug.WriteLine("Finished");
             return Result.Succeeded;
         }
     }

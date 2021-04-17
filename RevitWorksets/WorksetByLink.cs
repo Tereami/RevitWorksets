@@ -10,18 +10,22 @@ as long as you credit the author by linking back and license your new creations 
 This code is provided 'as is'. Author disclaims any implied warranty.
 Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
+
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RevitWorksets
 {
     [Serializable]
-    public class WorksetByParameter
+    public class WorksetByLink
     {
-        public string ParameterName;
-
-        public WorksetByParameter()
-        {
-
-        }
+        public string separator = "_";
+        public int partNumberAfterSeparator = 0;
+        public int ignoreFirstCharsAfterSeparation = 0;
+        public int ignoreLastCharsAfterSeparation = 0;
+        public string prefixForLinkWorksets = "#";
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <InfosStorage>
    <ConfigurationName>Test</ConfigurationName>
-   <LinkedFilesPrefix>KR</LinkedFilesPrefix>
    <worksetsByCategory>
       <WorksetByCategory>
 	     <WorksetName>Опалубка</WorksetName>
@@ -62,4 +61,14 @@
 		 </FamilyNames>
 	  </WorksetByFamily>
    </worksetsByFamily>
+    <worksetByParameter>
+      <ParameterName>WorksetNameForPlugin</ParameterName>
+   </worksetByParameter>
+   <worksetByLink>
+    <separator>-</separator>
+    <partNumberAfterSeparator>4</partNumberAfterSeparator>
+    <ignoreFirstCharsAfterSeparation>0</ignoreFirstCharsAfterSeparation>
+    <ignoreLastCharsAfterSeparation>0</ignoreLastCharsAfterSeparation>
+    <prefixForLinkWorksets>#</prefixForLinkWorksets>
+  </worksetByLink>
 </InfosStorage>
