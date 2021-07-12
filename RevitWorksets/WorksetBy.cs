@@ -58,22 +58,30 @@ namespace RevitWorksets
         public static void SetWorkset(Element elem, Workset w)
         {
             Debug.WriteLine("Set workset: " + w.Name + " for elem id " + elem.Id.IntegerValue);
-            Parameter wsparam = elem.get_Parameter(BuiltInParameter.ELEM_PARTITION_PARAM);
-            if (wsparam == null) return;
-            if (wsparam.IsReadOnly) return;
 
             bool elemNonGroup = (elem.GroupId == null) || (elem.GroupId == ElementId.InvalidElementId);
 
             if (elemNonGroup)
             {
+                Parameter wsparam = elem.get_Parameter(BuiltInParameter.ELEM_PARTITION_PARAM);
+                if (wsparam == null)
+                {
+                    Debug.WriteLine("Invalid workset parameter");
+                    return;
+                }
+                if (wsparam.IsReadOnly)
+                {
+                    Debug.WriteLine("Workset parameter is readonly, skip");
+                }
+
                 wsparam.Set(w.Id.IntegerValue);
                 Debug.WriteLine("Set workset success");
             }
             else
             {
                 Group gr = elem.Document.GetElement(elem.GroupId) as Group;
+                Debug.WriteLine("Elem is in group; set workset for the group: " + gr.Name);
                 SetWorkset(gr, w);
-                Debug.WriteLine("Elem is in group; set workset for group: " + gr.Name);
             }
         }
     }
