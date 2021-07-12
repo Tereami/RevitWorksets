@@ -65,8 +65,8 @@
       <ParameterName>WorksetNameForPlugin</ParameterName>
    </worksetByParameter>
    <worksetByLink>
-    <separator>-</separator>
-    <partNumberAfterSeparator>4</partNumberAfterSeparator>
+    <separator>_</separator>
+    <partNumberAfterSeparator>0</partNumberAfterSeparator>
     <ignoreFirstCharsAfterSeparation>0</ignoreFirstCharsAfterSeparation>
     <ignoreLastCharsAfterSeparation>0</ignoreLastCharsAfterSeparation>
     <prefixForLinkWorksets>#</prefixForLinkWorksets>
