@@ -42,7 +42,7 @@ namespace RevitWorksets
             //считываю список рабочих наборов
             string dllPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string dllFolder = System.IO.Path.GetDirectoryName(dllPath);
-            string folder = System.IO.Path.Combine(dllPath, "RevitWorksets_data");
+            string folder = System.IO.Path.Combine(dllFolder, "RevitWorksets_data");
             Debug.WriteLine("Default folder for xmls: " + folder);
 
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();

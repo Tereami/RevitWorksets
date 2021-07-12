@@ -72,6 +72,7 @@ namespace RevitWorksets
                 if (wsparam.IsReadOnly)
                 {
                     Debug.WriteLine("Workset parameter is readonly, skip");
+                    return;
                 }
 
                 wsparam.Set(w.Id.IntegerValue);
