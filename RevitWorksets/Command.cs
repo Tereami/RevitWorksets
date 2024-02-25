@@ -68,6 +68,7 @@ namespace RevitWorksets
                 throw new Exception(errormsg);
             }
             Debug.WriteLine("Deserialize success");
+            int counter = 0;
 
             using (Transaction t = new Transaction(doc))
             {
@@ -93,6 +94,7 @@ namespace RevitWorksets
                         foreach (Element elem in elems)
                         {
                             WorksetBy.SetWorkset(elem, wset);
+                            counter++;
                         }
                     }
                 }
@@ -122,6 +124,7 @@ namespace RevitWorksets
                         foreach (FamilyInstance fi in curFamIns)
                         {
                             WorksetBy.SetWorkset(fi, wset);
+                            counter++;
                         }
                     }
                 }
@@ -154,6 +157,7 @@ namespace RevitWorksets
                             if (elemType.Name.StartsWith(typeName))
                             {
                                 WorksetBy.SetWorkset(elem, wset);
+                                counter++;
                             }
                         }
                     }
@@ -177,6 +181,7 @@ namespace RevitWorksets
                         string wsetParamValue = p.AsString();
                         Workset wsetByparamval = WorksetBy.GetOrCreateWorkset(doc, wsetParamValue);
                         WorksetBy.SetWorkset(elem, wsetByparamval);
+                        counter++;
                     }
                 }
 
@@ -215,6 +220,7 @@ namespace RevitWorksets
                         Workset linkWorkset = WorksetBy.GetOrCreateWorkset(doc, linkWorksetName);
                         WorksetBy.SetWorkset(rli, linkWorkset);
                         WorksetBy.SetWorkset(linkFileType, linkWorkset);
+                        counter++;
                     }
                 }
 
@@ -235,10 +241,12 @@ namespace RevitWorksets
                     foreach(ImportInstance ii in  linkInstances) 
                     {
                         WorksetBy.SetWorkset(ii, dwgWorkset);
+                        counter++;
                     }
                     foreach(CADLinkType linkType in linkTypes)
                     {
                         WorksetBy.SetWorkset(linkType, dwgWorkset);
+                        counter++;
                     }
                     Debug.WriteLine("Workset for dwg links complete");
                 }
@@ -246,17 +254,18 @@ namespace RevitWorksets
                 t.Commit();
             }
 
+            string msg = $"Обработано элементов: {counter}"; 
             List<string> emptyWorksetsNames = WorksetTool.GetEmptyWorksets(doc);
             if(emptyWorksetsNames.Count > 0)
             {
-                string msg = "Обнаружены пустые рабочие наборы! Их можно удалить вручную:\n";
+                msg += System.Environment.NewLine + "Обнаружены пустые рабочие наборы! Их можно удалить вручную:\n";
                 foreach(string s in emptyWorksetsNames)
                 {
                     msg += s + "\n";
                 }
                 Debug.WriteLine("Empty worksets found: " + msg);
-                TaskDialog.Show("Отчёт", msg);
             }
+            BalloonTip.Show("Завершено!", msg);
             Debug.WriteLine("Finished");
             return Result.Succeeded;
         }

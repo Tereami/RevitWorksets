@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdWindows">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="RbsLogger">
       <HintPath>..\..\..\..\..\AppData\Roaming\Autodesk\Revit\Addins\20xx\BimStarter\RbsLogger.dll</HintPath>
     </Reference>
@@ -54,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="BalloonTip.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="InfosStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
