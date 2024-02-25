@@ -71,4 +71,9 @@
     <ignoreLastCharsAfterSeparation>0</ignoreLastCharsAfterSeparation>
     <prefixForLinkWorksets>#</prefixForLinkWorksets>
   </worksetByLink>
+  <worksetByDwg>
+	  <WorksetName>_DWG links</WorksetName>
+  </worksetByDwg>
+	
+	
 </InfosStorage>

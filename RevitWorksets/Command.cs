@@ -218,6 +218,31 @@ namespace RevitWorksets
                     }
                 }
 
+                if(storage.worksetByDwg != null)
+                {
+                    WorksetByDwg wsetDwg = storage.worksetByDwg;
+                    Debug.WriteLine("Workset for dwg links");
+                    List<ImportInstance> linkInstances = new FilteredElementCollector(doc)
+                        .OfClass(typeof(ImportInstance))
+                        .Cast<ImportInstance>()
+                        .ToList();
+                    List<CADLinkType> linkTypes = new FilteredElementCollector(doc)
+                        .OfClass(typeof(CADLinkType))
+                        .Cast<CADLinkType>()
+                        .ToList();
+
+                    Workset dwgWorkset = WorksetBy.GetOrCreateWorkset(doc, wsetDwg.WorksetName);
+                    foreach(ImportInstance ii in  linkInstances) 
+                    {
+                        WorksetBy.SetWorkset(ii, dwgWorkset);
+                    }
+                    foreach(CADLinkType linkType in linkTypes)
+                    {
+                        WorksetBy.SetWorkset(linkType, dwgWorkset);
+                    }
+                    Debug.WriteLine("Workset for dwg links complete");
+                }
+
                 t.Commit();
             }
 

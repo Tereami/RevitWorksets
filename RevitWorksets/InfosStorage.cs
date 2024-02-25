@@ -25,6 +25,7 @@ namespace RevitWorksets
         public List<WorksetByType> worksetsByType;
         public WorksetByParameter worksetByParameter;
         public WorksetByLink worksetByLink;
+        public WorksetByDwg worksetByDwg = new WorksetByDwg { WorksetName = "_DWG" };
 
         public InfosStorage()
         {
