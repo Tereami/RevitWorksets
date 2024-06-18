@@ -28,14 +28,14 @@ namespace RevitWorksets
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            Debug.Listeners.Clear();
-            Debug.Listeners.Add(new RbsLogger.Logger("Worksets"));
+            Trace.Listeners.Clear();
+            Trace.Listeners.Add(new RbsLogger.Logger("Worksets"));
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
             if(!doc.IsWorkshared)
             {
                 message = "Файл не является файлом совместной работы";
-                Debug.WriteLine("File os not workshared document");
+                Trace.WriteLine("File os not workshared document");
                 return Result.Failed; ;
             }
 
@@ -43,7 +43,7 @@ namespace RevitWorksets
             string dllPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string dllFolder = System.IO.Path.GetDirectoryName(dllPath);
             string folder = System.IO.Path.Combine(dllFolder, "RevitWorksets_data");
-            Debug.WriteLine("Default folder for xmls: " + folder);
+            Trace.WriteLine("Default folder for xmls: " + folder);
 
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
             dialog.InitialDirectory = folder;
@@ -51,7 +51,7 @@ namespace RevitWorksets
             dialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
             if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK) return Result.Cancelled;
             string xmlFilePath = dialog.FileName;
-            Debug.WriteLine("Xml path: " + xmlFilePath);
+            Trace.WriteLine("Xml path: " + xmlFilePath);
 
             InfosStorage storage = new InfosStorage();
             System.Xml.Serialization.XmlSerializer serializer =
@@ -64,20 +64,20 @@ namespace RevitWorksets
             if(storage == null)
             {
                 string errormsg = "Unable to deserialize: " + xmlFilePath.Replace("\\", " \\");
-                Debug.WriteLine(errormsg);
+                Trace.WriteLine(errormsg);
                 throw new Exception(errormsg);
             }
-            Debug.WriteLine("Deserialize success");
+            Trace.WriteLine("Deserialize success");
             int counter = 0;
 
             using (Transaction t = new Transaction(doc))
             {
                 t.Start("Создание рабочих наборов");
 
-                Debug.WriteLine("Start worksets by category");
+                Trace.WriteLine("Start worksets by category");
                 foreach (WorksetByCategory wb in storage.worksetsByCategory)
                 {
-                    Debug.WriteLine("Current workset: " + wb.WorksetName);
+                    Trace.WriteLine("Current workset: " + wb.WorksetName);
                     Workset wset = wb.GetWorkset(doc);
                     List<BuiltInCategory> cats = wb.revitCategories;
                     if (cats == null) continue;
@@ -99,16 +99,16 @@ namespace RevitWorksets
                     }
                 }
 
-                Debug.WriteLine("Start worksets by family names");
+                Trace.WriteLine("Start worksets by family names");
                 List<FamilyInstance> famIns = new FilteredElementCollector(doc)
                         .WhereElementIsNotElementType()
                         .OfClass(typeof(FamilyInstance))
                         .Cast<FamilyInstance>()
                         .ToList();
-                Debug.WriteLine("Family instances found: " + famIns.Count);
+                Trace.WriteLine("Family instances found: " + famIns.Count);
                 foreach (WorksetByFamily wb in storage.worksetsByFamily)
                 {
-                    Debug.WriteLine("Current workset:" + wb.WorksetName);
+                    Trace.WriteLine("Current workset:" + wb.WorksetName);
                     Workset wset = wb.GetWorkset(doc);
 
                     List<string> families = wb.FamilyNames;
@@ -129,16 +129,16 @@ namespace RevitWorksets
                     }
                 }
 
-                Debug.WriteLine("Start worksets by type names");
+                Trace.WriteLine("Start worksets by type names");
                 List<Element> allElems = new FilteredElementCollector(doc)
                             .WhereElementIsNotElementType()
                             .Cast<Element>()
                             .ToList();
-                Debug.WriteLine("Elements found: " + allElems.Count);
+                Trace.WriteLine("Elements found: " + allElems.Count);
 
                 foreach (WorksetByType wb in storage.worksetsByType)
                 {
-                    Debug.WriteLine("Current workset:" + wb.WorksetName);
+                    Trace.WriteLine("Current workset:" + wb.WorksetName);
                     Workset wset = wb.GetWorkset(doc);
                     List<string> typeNames = wb.TypeNames;
                     if (typeNames == null) continue;
@@ -152,7 +152,7 @@ namespace RevitWorksets
                             if (typeId == null || typeId == ElementId.InvalidElementId) continue;
                             ElementType elemType = doc.GetElement(typeId) as ElementType;
                             if (elemType == null) continue;
-                            Debug.WriteLine("Element id: " + elem.Id.IntegerValue + ", TypeName: " + elemType.Name);
+                            Trace.WriteLine("Element id: " + elem.Id.GetValue() + ", TypeName: " + elemType.Name);
 
                             if (elemType.Name.StartsWith(typeName))
                             {
@@ -165,7 +165,7 @@ namespace RevitWorksets
                 
                 if(storage.worksetByParameter != null)
                 {
-                    Debug.WriteLine("Start worksets by parameters");
+                    Trace.WriteLine("Start worksets by parameters");
                     string paramName = storage.worksetByParameter.ParameterName;
                     foreach (Element elem in allElems)
                     {
@@ -175,7 +175,7 @@ namespace RevitWorksets
                         if(p.StorageType != StorageType.String)
                         {
                             string errmsg = "Parameter is not string: " + paramName;
-                            Debug.WriteLine(errmsg);
+                            Trace.WriteLine(errmsg);
                             throw new Exception(errmsg);
                         }
                         string wsetParamValue = p.AsString();
@@ -189,25 +189,25 @@ namespace RevitWorksets
                 if (storage.worksetByLink != null)
                 {
                     WorksetByLink wsetbylink = storage.worksetByLink;
-                    Debug.WriteLine("Worksets for link files");
+                    Trace.WriteLine("Worksets for link files");
                     List<RevitLinkInstance> links = new FilteredElementCollector(doc)
                         .OfClass(typeof(RevitLinkInstance))
                         .Cast<RevitLinkInstance>()
                         .ToList();
-                    Debug.WriteLine("Links found: " + links.Count);
+                    Trace.WriteLine("Links found: " + links.Count);
 
                     foreach (RevitLinkInstance rli in links)
                     {
-                        Debug.WriteLine("Current link: " + rli.Name);
+                        Trace.WriteLine("Current link: " + rli.Name);
                         RevitLinkType linkFileType = doc.GetElement(rli.GetTypeId()) as RevitLinkType;
                         if (linkFileType == null)
                         {
-                            Debug.WriteLine("LinkType is invalid");
+                            Trace.WriteLine("LinkType is invalid");
                             continue;
                         }
                         if (linkFileType.IsNestedLink)
                         {
-                            Debug.WriteLine("It is nested link");
+                            Trace.WriteLine("It is nested link");
                             continue;
                         }
                         char separator = wsetbylink.separator[0];
@@ -215,7 +215,7 @@ namespace RevitWorksets
                         string linkWorksetName2 = linkWorksetName1
                             .Substring(wsetbylink.ignoreFirstCharsAfterSeparation, linkWorksetName1.Length - wsetbylink.ignoreLastCharsAfterSeparation);
                         string linkWorksetName = wsetbylink.prefixForLinkWorksets + linkWorksetName2;
-                        Debug.WriteLine("Workset name: " + linkWorksetName);
+                        Trace.WriteLine("Workset name: " + linkWorksetName);
 
                         Workset linkWorkset = WorksetBy.GetOrCreateWorkset(doc, linkWorksetName);
                         WorksetBy.SetWorkset(rli, linkWorkset);
@@ -227,7 +227,7 @@ namespace RevitWorksets
                 if(storage.worksetByDwg != null)
                 {
                     WorksetByDwg wsetDwg = storage.worksetByDwg;
-                    Debug.WriteLine("Workset for dwg links");
+                    Trace.WriteLine("Workset for dwg links");
                     List<ImportInstance> linkInstances = new FilteredElementCollector(doc)
                         .OfClass(typeof(ImportInstance))
                         .Cast<ImportInstance>()
@@ -248,7 +248,7 @@ namespace RevitWorksets
                         WorksetBy.SetWorkset(linkType, dwgWorkset);
                         counter++;
                     }
-                    Debug.WriteLine("Workset for dwg links complete");
+                    Trace.WriteLine("Workset for dwg links complete");
                 }
 
                 t.Commit();
@@ -263,10 +263,10 @@ namespace RevitWorksets
                 {
                     msg += s + "\n";
                 }
-                Debug.WriteLine("Empty worksets found: " + msg);
+                Trace.WriteLine("Empty worksets found: " + msg);
             }
             BalloonTip.Show("Завершено!", msg);
-            Debug.WriteLine("Finished");
+            Trace.WriteLine("Finished");
             return Result.Succeeded;
         }
     }
