@@ -12,6 +12,7 @@ Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace RevitWorksets
 {
@@ -20,9 +21,30 @@ namespace RevitWorksets
     {
         public List<string> TypeNames;
 
+        [DisplayName("Префиксы")]
+        public string TypesText
+        {
+            get
+            {
+                if (TypeNames == null || TypeNames.Count == 0) return "None";
+                string cats = string.Join(", ", TypeNames);
+                return cats;
+            }
+        }
+
         public WorksetByType()
         {
 
+        }
+
+        public static BindingList<WorksetByType> GetDefault()
+        {
+            BindingList<WorksetByType> list = new BindingList<WorksetByType>
+            {
+                new WorksetByType { WorksetName = "Архитектура", TypeNames = new List<string> { "100_", "101_", "102_", "103_" } },
+                new WorksetByType { WorksetName = "MEP", TypeNames = new List<string> { "40", "50", "60", "70", "80", "90" } }
+            };
+            return list;
         }
     }
 }

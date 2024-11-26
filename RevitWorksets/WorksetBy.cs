@@ -15,12 +15,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using Autodesk.Revit.DB;
+using System.ComponentModel;
 
 namespace RevitWorksets
 {
     public abstract class WorksetBy
     {
-        public string WorksetName;
+        [DisplayName("Имя набора")]
+        public string WorksetName { get; set; }
 
         public Workset GetWorkset(Document doc)
         {
@@ -38,7 +40,7 @@ namespace RevitWorksets
 
             if (!checkNotExists)
             {
-                Trace.WriteLine("Workset exists: " + worksetName);
+                Debug.WriteLine("Workset exists: " + worksetName);
                 Workset wset = new FilteredWorksetCollector(doc)
                 .OfKind(WorksetKind.UserWorkset)
                 .ToWorksets()
@@ -48,7 +50,7 @@ namespace RevitWorksets
             }
             else
             {
-                Trace.WriteLine("Create workset: " + worksetName);
+                Debug.WriteLine("Create workset: " + worksetName);
                 Workset wset = Workset.Create(doc, worksetName);
                 return wset;
             }
@@ -57,7 +59,7 @@ namespace RevitWorksets
 
         public static void SetWorkset(Element elem, Workset w)
         {
-            Trace.WriteLine("Set workset: " + w.Name + " for elem id " + elem.Id.GetValue());
+            Debug.WriteLine("Set workset: " + w.Name + " for elem id " + elem.Id.GetValue());
 
             bool elemNonGroup = (elem.GroupId == null) || (elem.GroupId == ElementId.InvalidElementId);
 
@@ -66,22 +68,22 @@ namespace RevitWorksets
                 Parameter wsparam = elem.get_Parameter(BuiltInParameter.ELEM_PARTITION_PARAM);
                 if (wsparam == null)
                 {
-                    Trace.WriteLine("Invalid workset parameter");
+                    Debug.WriteLine("Invalid workset parameter");
                     return;
                 }
                 if (wsparam.IsReadOnly)
                 {
-                    Trace.WriteLine("Workset parameter is readonly, skip");
+                    Debug.WriteLine("Workset parameter is readonly, skip");
                     return;
                 }
 
                 wsparam.Set(w.Id.IntegerValue);
-                Trace.WriteLine("Set workset success");
+                Debug.WriteLine("Set workset success");
             }
             else
             {
                 Group gr = elem.Document.GetElement(elem.GroupId) as Group;
-                Trace.WriteLine("Elem is in group; set workset for the group: " + gr.Name);
+                Debug.WriteLine("Elem is in group; set workset for the group: " + gr.Name);
                 SetWorkset(gr, w);
             }
         }

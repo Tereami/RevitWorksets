@@ -12,6 +12,7 @@ Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace RevitWorksets
 {
@@ -20,9 +21,49 @@ namespace RevitWorksets
     {
         public List<string> FamilyNames;
 
+        [DisplayName("Префиксы")]
+        public string FamiliesText
+        {
+            get
+            {
+                if (FamilyNames == null || FamilyNames.Count == 0) return "None";
+                string cats = string.Join(", ", FamilyNames);
+                return cats;
+            }
+        }
+
         public WorksetByFamily()
         {
 
+        }
+
+
+        public static BindingList<WorksetByFamily> GetDefault()
+        {
+            BindingList<WorksetByFamily> worksets = new BindingList<WorksetByFamily>
+            {
+                new WorksetByFamily
+                {
+                    WorksetName = "Опалубка",
+                    FamilyNames = new List<string> { "201_", "202_", "204_", "210_", "211_", "220_" }
+                },
+                new WorksetByFamily
+                {
+                    WorksetName = "Гидроизоляция",
+                    FamilyNames = new List<string> { "222_" }
+                },
+                new WorksetByFamily
+                {
+                    WorksetName = "Арматура",
+                    FamilyNames = new List<string> { "261_", "262_", "263_", "264_", "266_" }
+                },
+                new WorksetByFamily
+                {
+                    WorksetName = "Арматура_Выпуски",
+                    FamilyNames = new List<string> { "265_" }
+                }
+            };
+            return worksets;
         }
     }
 }

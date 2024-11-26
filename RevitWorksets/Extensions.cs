@@ -18,5 +18,17 @@ namespace RevitWorksets
             return (int)elemid.Value;
 #endif
         }
+
+        public static string GetCategoryTranslatedName(BuiltInCategory revitcategory)
+        {
+            string name = LabelUtils.GetLabelFor(revitcategory);
+            return name;
+        }
+
+        public static string GetCategoryInternalName(BuiltInCategory revitCategory)
+        {
+            string name = Enum.GetName(typeof(BuiltInCategory), revitCategory);
+            return name;
+        }
     }
 }

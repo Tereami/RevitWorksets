@@ -13,6 +13,7 @@ Zuev Aleksandr, 2020, all rigths reserved.*/
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +28,27 @@ namespace RevitWorksets
         public int ignoreFirstCharsAfterSeparation = 0;
         public int ignoreLastCharsAfterSeparation = 0;
         public string prefixForLinkWorksets = "#";
+
+        public string GetWorksetName(string filename)
+        {
+            if(string.IsNullOrEmpty(separator)) separator = "_";
+
+            char separatorChar = separator[0];
+            string[] arr = filename.Split(separatorChar);
+            if(partNumberAfterSeparator >= arr.Length)
+            {
+                partNumberAfterSeparator = arr.Length - 1;
+            }
+            string linkWorksetName = arr[partNumberAfterSeparator];
+            int sumIgnoreChars = ignoreFirstCharsAfterSeparation + ignoreLastCharsAfterSeparation;
+            if (sumIgnoreChars < linkWorksetName.Length)
+            {
+                linkWorksetName = linkWorksetName
+                    .Substring(ignoreFirstCharsAfterSeparation, linkWorksetName.Length - sumIgnoreChars);
+            }
+            linkWorksetName = prefixForLinkWorksets + linkWorksetName;
+            Debug.WriteLine("Workset name: " + linkWorksetName);
+            return linkWorksetName;
+        }
     }
 }
