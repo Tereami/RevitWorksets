@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelHelp6.Text" xml:space="preserve">
+    <value>↓ настройки сохраняются автоматически при нажатии ОК. Этими кнопками можно создать разные файлы настроек, либо использовать единый файл, созданный централизованно. Путь к последнему использованному файлу запоминается. Можно пересохранить из xml файла, созданного в старой версии плагина.</value>
+  </data>
   <data name="labelHelp4.Text" xml:space="preserve">
     <value>← если имена связанных файлов названы по определенному правилу (например, "Индекс_Раздел_ИмяПроекта", то можно не генерировать отдельный рабочий набор для каждого файла, а, например, закинуть все связи в рабочий набор по шифру раздела: разрезать по символу "_".</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="labelHelp6.Text" xml:space="preserve">
-    <value>←настройки сохраняются автоматически при нажатии ОК. Этими кнопками можно создать разные файлы настроек, либо использовать единый файл, созданный централизованно. Путь к последнему использованному файлу запоминается. Можно пересохранить из xml файла, созданного в старой версии плагина.</value>
-  </data>
 </root>

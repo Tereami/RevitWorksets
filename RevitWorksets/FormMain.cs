@@ -171,10 +171,9 @@ namespace RevitWorksets
             XmlPath = dialog.FileName;
 
             Model = InfosStorage.LoadFromFile(XmlPath);
-            dataGridViewCategories.DataSource = Model.worksetsByCategory;
-            dataGridViewFamilies.DataSource = Model.worksetsByFamily;
-            dataGridViewTypes.DataSource = Model.worksetsByType;
+
             BuildWindow();
+            ReloadTablesDatasource();
 
             InfosStorage.SaveLastUsedXmlPath(XmlPath);
             Debug.WriteLine("Xml path: " + XmlPath);
@@ -198,10 +197,35 @@ namespace RevitWorksets
             toolStripStatusLabel1.Text = "Сохранено в файл: " + XmlPath;
         }
 
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            flagLinkWorksetEnabled = false;
+            XmlPath = null;
+            Model = InfosStorage.GetDefault();
+            ReloadTablesDatasource();
+            InfosStorage.ClearLastXmlPath();
+            MakeHelpLabelsVisible(true);
+            toolStripStatusLabel1.Text = "Настройки сброшены";
+            flagLinkWorksetEnabled = true;
+        }
+
+        private void ReloadTablesDatasource()
+        {
+            dataGridViewCategories.DataSource = Model.worksetsByCategory;
+            dataGridViewFamilies.DataSource = Model.worksetsByFamily;
+            dataGridViewTypes.DataSource = Model.worksetsByType;
+        }
+
+
         private void buttonOk_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("OK clicked");
-            UpdateModel();
+
+            if (checkBoxEnabledByCategory.Checked
+                && checkBoxEnableByFamilyName.Checked
+                && checkBoxEnableByType.Checked)
+
+                UpdateModel();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -216,7 +240,6 @@ namespace RevitWorksets
 
         private void textBoxLink_TextChanged(object sender, EventArgs e)
         {
-
             if (!flagLinkWorksetEnabled) return;
             UpdateModel();
             string sampleFilename = textBoxLinkTestFilename.Text;
@@ -290,6 +313,7 @@ namespace RevitWorksets
 
         private void MakeHelpLabelsVisible(bool visible)
         {
+            labelHelp0.Visible = visible;
             labelHelp1.Visible = visible;
             labelHelp2.Visible = visible;
             labelHelp3.Visible = visible;
@@ -297,7 +321,5 @@ namespace RevitWorksets
             labelHelp5.Visible = visible;
             labelHelp6.Visible = visible;
         }
-
-
     }
 }

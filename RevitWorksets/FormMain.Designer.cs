@@ -41,6 +41,7 @@
             this.labelHelp2 = new System.Windows.Forms.Label();
             this.dataGridViewFamilies = new System.Windows.Forms.DataGridView();
             this.checkBoxEnableByFamilyName = new System.Windows.Forms.CheckBox();
+            this.labelHelp6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxWorksetNameParameter = new System.Windows.Forms.TextBox();
@@ -75,7 +76,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelHelp3 = new System.Windows.Forms.Label();
-            this.labelHelp6 = new System.Windows.Forms.Label();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.labelHelp0 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategories)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -250,6 +252,21 @@
             this.checkBoxEnableByFamilyName.UseVisualStyleBackColor = true;
             this.checkBoxEnableByFamilyName.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
             // 
+            // labelHelp6
+            // 
+            this.labelHelp6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelHelp6.AutoEllipsis = true;
+            this.labelHelp6.BackColor = System.Drawing.Color.Yellow;
+            this.labelHelp6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHelp6.Location = new System.Drawing.Point(33, 757);
+            this.labelHelp6.Name = "labelHelp6";
+            this.labelHelp6.Size = new System.Drawing.Size(461, 56);
+            this.labelHelp6.TabIndex = 2;
+            this.labelHelp6.Text = resources.GetString("labelHelp6.Text");
+            this.labelHelp6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelHelp6.Visible = false;
+            this.labelHelp6.Click += new System.EventHandler(this.labelHelp_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -369,7 +386,7 @@
             this.labelHelp4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHelp4.Location = new System.Drawing.Point(222, 0);
             this.labelHelp4.Name = "labelHelp4";
-            this.labelHelp4.Size = new System.Drawing.Size(289, 89);
+            this.labelHelp4.Size = new System.Drawing.Size(295, 89);
             this.labelHelp4.TabIndex = 2;
             this.labelHelp4.Text = resources.GetString("labelHelp4.Text");
             this.labelHelp4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -644,7 +661,7 @@
             this.labelHelp3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHelp3.Location = new System.Drawing.Point(716, 6);
             this.labelHelp3.Name = "labelHelp3";
-            this.labelHelp3.Size = new System.Drawing.Size(289, 49);
+            this.labelHelp3.Size = new System.Drawing.Size(297, 49);
             this.labelHelp3.TabIndex = 2;
             this.labelHelp3.Text = "← рабочие наборы применяются последовательно: Категория - Семейство - Тип и так д" +
     "алее. Последующее правило имеет больший приоритет";
@@ -652,20 +669,32 @@
             this.labelHelp3.Visible = false;
             this.labelHelp3.Click += new System.EventHandler(this.labelHelp_Click);
             // 
-            // labelHelp6
+            // buttonReset
             // 
-            this.labelHelp6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelHelp6.AutoEllipsis = true;
-            this.labelHelp6.BackColor = System.Drawing.Color.Yellow;
-            this.labelHelp6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelHelp6.Location = new System.Drawing.Point(274, 804);
-            this.labelHelp6.Name = "labelHelp6";
-            this.labelHelp6.Size = new System.Drawing.Size(438, 56);
-            this.labelHelp6.TabIndex = 2;
-            this.labelHelp6.Text = resources.GetString("labelHelp6.Text");
-            this.labelHelp6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHelp6.Visible = false;
-            this.labelHelp6.Click += new System.EventHandler(this.labelHelp_Click);
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonReset.Location = new System.Drawing.Point(274, 818);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(125, 23);
+            this.buttonReset.TabIndex = 2;
+            this.buttonReset.Text = "Сбросить настройки";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // labelHelp0
+            // 
+            this.labelHelp0.AutoEllipsis = true;
+            this.labelHelp0.BackColor = System.Drawing.Color.Yellow;
+            this.labelHelp0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHelp0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelHelp0.Location = new System.Drawing.Point(375, 246);
+            this.labelHelp0.Name = "labelHelp0";
+            this.labelHelp0.Size = new System.Drawing.Size(313, 85);
+            this.labelHelp0.TabIndex = 2;
+            this.labelHelp0.Text = "Подсказки отображаются только при первом  запуске. Чтобы скрыть, щелкните по любо" +
+    "й подсказке!";
+            this.labelHelp0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelHelp0.Visible = false;
+            this.labelHelp0.Click += new System.EventHandler(this.labelHelp_Click);
             // 
             // FormMain
             // 
@@ -674,6 +703,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(1069, 866);
+            this.Controls.Add(this.labelHelp0);
             this.Controls.Add(this.labelHelp6);
             this.Controls.Add(this.labelHelp3);
             this.Controls.Add(this.statusStrip1);
@@ -684,6 +714,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
@@ -770,5 +801,7 @@
         private System.Windows.Forms.Label labelHelp4;
         private System.Windows.Forms.Label labelHelp5;
         private System.Windows.Forms.Label labelHelp6;
+        private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Label labelHelp0;
     }
 }

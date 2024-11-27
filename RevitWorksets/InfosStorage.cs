@@ -83,9 +83,36 @@ namespace RevitWorksets
 
         public static void SaveLastUsedXmlPath(string xmlPath)
         {
+            string pathFileName = GetPathFile();
+            File.WriteAllText(pathFileName, xmlPath);
+        }
+
+        public static void ClearLastXmlPath()
+        {
+            string pathFileName = GetPathFile();
+            if (File.Exists(pathFileName))
+            {
+                try
+                {
+                    File.Delete(pathFileName);
+                    Debug.WriteLine("Deleted file: " + pathFileName);
+                }
+                catch
+                {
+                    Debug.WriteLine("Failed delete file: " + pathFileName);
+                }
+            }
+            else
+            {
+                Debug.WriteLine("No file: " + pathFileName);
+            }
+        }
+
+        private static string GetPathFile()
+        {
             string storageFolder = InfosStorage.GetDefaultStorageFolder();
             string pathFileName = Path.Combine(storageFolder, "path.txt");
-            File.WriteAllText(pathFileName, xmlPath);
+            return pathFileName;
         }
 
         public static InfosStorage LoadFromFile(string xmlPath)
