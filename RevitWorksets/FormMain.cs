@@ -1,15 +1,20 @@
-﻿using System;
+﻿#region License
+/*Данный код опубликован под лицензией Creative Commons Attribution-ShareAlike.
+Разрешено использовать, распространять, изменять и брать данный код за основу для производных в коммерческих и
+некоммерческих целях, при условии указания авторства и если производные лицензируются на тех же условиях.
+Код поставляется "как есть". Автор не несет ответственности за возможные последствия использования.
+Зуев Александр, 2020, все права защищены.
+This code is listed under the Creative Commons Attribution-ShareAlike license.
+You may use, redistribute, remix, tweak, and build upon this work non-commercially and commercially,
+as long as you credit the author by linking back and license your new creations under the same terms.
+This code is provided 'as is'. Author disclaims any implied warranty.
+Zuev Aleksandr, 2020, all rigths reserved.*/
+#endregion
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace RevitWorksets
@@ -20,6 +25,9 @@ namespace RevitWorksets
 
         List<RevitCategory> AllCategories { get; set; }
         public string XmlPath { get; set; }
+
+        private bool flagLinkWorksetEnabled = false;
+
         public FormMain(InfosStorage newSettings, string xmlPath, List<RevitCategory> allCategories)
         {
             Debug.WriteLine("Initialize main window");
@@ -36,6 +44,7 @@ namespace RevitWorksets
             CreateButtonColumn(dataGridViewTypes, "Имена типов", nameof(WorksetByType.TypesText), Model.worksetsByType);
 
             Debug.WriteLine("Initialized main window");
+            flagLinkWorksetEnabled = true;
         }
 
         private void CreateButtonColumn(DataGridView table, string header, string name, object source)
@@ -108,10 +117,8 @@ namespace RevitWorksets
             }
 
 
-            checkBoxEnabledByCategory.Checked = Model.WorksetByCetagoryEnabled;
-
+            checkBoxEnabledByCategory.Checked = Model.WorksetByCategoryEnabled;
             checkBoxEnableByFamilyName.Checked = Model.WorksetByFamilyEnabled;
-
             checkBoxEnableByType.Checked = Model.WorksetByTypeEnabled;
 
             checkBoxEnabledByParameter.Checked = Model.WorksetByParameterEnabled;
@@ -127,14 +134,14 @@ namespace RevitWorksets
             checkBoxEnabledForDwgLinks.Checked = Model.WorksetByDwgEnabled;
             textBoxDwgWorksetName.Text = Model.worksetByDwg.WorksetName;
 
-            refreshLinkWorksetName();
+            this.Refresh();
         }
 
         private void UpdateModel()
         {
-            Model.WorksetByCetagoryEnabled = checkBoxEnabledByCategory.Checked;
-
+            Model.WorksetByCategoryEnabled = checkBoxEnabledByCategory.Checked;
             Model.WorksetByFamilyEnabled = checkBoxEnableByFamilyName.Checked;
+            Model.WorksetByTypeEnabled = checkBoxEnableByType.Checked;
 
             Model.WorksetByParameterEnabled = checkBoxEnabledByParameter.Checked;
             Model.worksetByParameter.ParameterName = textBoxWorksetNameParameter.Text;
@@ -152,6 +159,7 @@ namespace RevitWorksets
 
         private void buttonLoad_Click(object sender, EventArgs e)
         {
+            flagLinkWorksetEnabled = false;
             string lastUsedFolder = Path.GetDirectoryName(XmlPath);
 
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
@@ -161,12 +169,16 @@ namespace RevitWorksets
             if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
 
             XmlPath = dialog.FileName;
-            InfosStorage.SaveLastUsedXmlPath(XmlPath);
 
             Model = InfosStorage.LoadFromFile(XmlPath);
+            dataGridViewCategories.DataSource = Model.worksetsByCategory;
+            dataGridViewFamilies.DataSource = Model.worksetsByFamily;
+            dataGridViewTypes.DataSource = Model.worksetsByType;
             BuildWindow();
 
+            InfosStorage.SaveLastUsedXmlPath(XmlPath);
             Debug.WriteLine("Xml path: " + XmlPath);
+            flagLinkWorksetEnabled = true;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -181,13 +193,15 @@ namespace RevitWorksets
             if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
 
             XmlPath = dialog.FileName;
-            toolStripStatusLabel1.Text = "Сохранено в файл: " + XmlPath;
+            UpdateModel();
             Model.Save(XmlPath);
+            toolStripStatusLabel1.Text = "Сохранено в файл: " + XmlPath;
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("OK clicked");
+            UpdateModel();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -199,30 +213,24 @@ namespace RevitWorksets
             this.Close();
         }
 
-        private void refreshLinkWorksetName()
+
+        private void textBoxLink_TextChanged(object sender, EventArgs e)
         {
+
+            if (!flagLinkWorksetEnabled) return;
             UpdateModel();
             string sampleFilename = textBoxLinkTestFilename.Text;
             string worksetName = Model.worksetByLink.GetWorksetName(sampleFilename);
-            label1LinkTestResult.Text = worksetName;
+            labelLinkTestResult.Text = worksetName;
         }
 
-        private void textBoxLink_KeyUp(object sender, KeyEventArgs e)
-        {
-            refreshLinkWorksetName();
-        }
-
-
-        private void numericLink_Click(object sender, EventArgs e)
-        {
-            refreshLinkWorksetName();
-        }
 
         private void dataGridViewCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowNumber = datagridViewCellClickHandler(sender, e);
+            if (rowNumber == -1) return;
 
-            WorksetByCategory clickedRow = Model.worksetsByCategory[e.RowIndex];
+            WorksetByCategory clickedRow = Model.worksetsByCategory[rowNumber];
             if (clickedRow.revitCategories == null)
                 clickedRow.revitCategories = new List<Autodesk.Revit.DB.BuiltInCategory>();
 
@@ -239,6 +247,8 @@ namespace RevitWorksets
         private void dataGridViewFamilies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowNumber = datagridViewCellClickHandler(sender, e);
+            if (rowNumber == -1) return;
+
             WorksetByFamily clickedRow = Model.worksetsByFamily[rowNumber];
 
             FormSelectTextValues formSelect = new FormSelectTextValues("Задайте префиксы имен семейств", clickedRow.FamilyNames);
@@ -251,6 +261,8 @@ namespace RevitWorksets
         private void dataGridViewByType_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowNumber = datagridViewCellClickHandler(sender, e);
+            if (rowNumber == -1) return;
+
             WorksetByType clickedRow = Model.worksetsByType[rowNumber];
 
             FormSelectTextValues formSelect = new FormSelectTextValues("Задайте префиксы имен типов", clickedRow.TypeNames);
@@ -263,10 +275,12 @@ namespace RevitWorksets
         private int datagridViewCellClickHandler(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgv = sender as DataGridView ?? throw new Exception("DataGridView cast error");
-            if (!(dgv.Columns[e.ColumnIndex] is DataGridViewButtonColumn))
-                return -1;
-            int rowNumber = e.RowIndex;
-            return rowNumber;
+            if (dgv.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                int rowNumber = e.RowIndex;
+                return rowNumber;
+            }
+            return -1;
         }
 
         private void labelHelp_Click(object sender, EventArgs e)
@@ -283,5 +297,7 @@ namespace RevitWorksets
             labelHelp5.Visible = visible;
             labelHelp6.Visible = visible;
         }
+
+
     }
 }

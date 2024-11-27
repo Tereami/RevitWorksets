@@ -50,7 +50,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.labelHelp5 = new System.Windows.Forms.Label();
             this.labelHelp4 = new System.Windows.Forms.Label();
-            this.label1LinkTestResult = new System.Windows.Forms.Label();
+            this.labelLinkTestResult = new System.Windows.Forms.Label();
             this.numericLinkIgnoreLastChars = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.numericLinkIgnoreFirstChars = new System.Windows.Forms.NumericUpDown();
@@ -324,7 +324,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.Controls.Add(this.labelHelp5);
             this.groupBox4.Controls.Add(this.labelHelp4);
-            this.groupBox4.Controls.Add(this.label1LinkTestResult);
+            this.groupBox4.Controls.Add(this.labelLinkTestResult);
             this.groupBox4.Controls.Add(this.numericLinkIgnoreLastChars);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.numericLinkIgnoreFirstChars);
@@ -376,17 +376,17 @@
             this.labelHelp4.Visible = false;
             this.labelHelp4.Click += new System.EventHandler(this.labelHelp_Click);
             // 
-            // label1LinkTestResult
+            // labelLinkTestResult
             // 
-            this.label1LinkTestResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelLinkTestResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1LinkTestResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1LinkTestResult.Location = new System.Drawing.Point(291, 195);
-            this.label1LinkTestResult.Name = "label1LinkTestResult";
-            this.label1LinkTestResult.Size = new System.Drawing.Size(218, 20);
-            this.label1LinkTestResult.TabIndex = 4;
-            this.label1LinkTestResult.Text = "...";
-            this.label1LinkTestResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLinkTestResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelLinkTestResult.Location = new System.Drawing.Point(291, 195);
+            this.labelLinkTestResult.Name = "labelLinkTestResult";
+            this.labelLinkTestResult.Size = new System.Drawing.Size(218, 20);
+            this.labelLinkTestResult.TabIndex = 4;
+            this.labelLinkTestResult.Text = "...";
+            this.labelLinkTestResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericLinkIgnoreLastChars
             // 
@@ -396,8 +396,7 @@
             this.numericLinkIgnoreLastChars.Name = "numericLinkIgnoreLastChars";
             this.numericLinkIgnoreLastChars.Size = new System.Drawing.Size(354, 20);
             this.numericLinkIgnoreLastChars.TabIndex = 3;
-            this.numericLinkIgnoreLastChars.Click += new System.EventHandler(this.numericLink_Click);
-            this.numericLinkIgnoreLastChars.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLink_KeyUp);
+            this.numericLinkIgnoreLastChars.ValueChanged += new System.EventHandler(this.textBoxLink_TextChanged);
             // 
             // label7
             // 
@@ -417,8 +416,7 @@
             this.numericLinkIgnoreFirstChars.Name = "numericLinkIgnoreFirstChars";
             this.numericLinkIgnoreFirstChars.Size = new System.Drawing.Size(354, 20);
             this.numericLinkIgnoreFirstChars.TabIndex = 3;
-            this.numericLinkIgnoreFirstChars.Click += new System.EventHandler(this.numericLink_Click);
-            this.numericLinkIgnoreFirstChars.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLink_KeyUp);
+            this.numericLinkIgnoreFirstChars.ValueChanged += new System.EventHandler(this.textBoxLink_TextChanged);
             // 
             // label6
             // 
@@ -438,8 +436,7 @@
             this.numericLinkPartNumber.Name = "numericLinkPartNumber";
             this.numericLinkPartNumber.Size = new System.Drawing.Size(354, 20);
             this.numericLinkPartNumber.TabIndex = 3;
-            this.numericLinkPartNumber.Click += new System.EventHandler(this.numericLink_Click);
-            this.numericLinkPartNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLink_KeyUp);
+            this.numericLinkPartNumber.ValueChanged += new System.EventHandler(this.textBoxLink_TextChanged);
             // 
             // label4
             // 
@@ -460,7 +457,7 @@
             this.textBoxLinkTestFilename.Text = "0123_КР.П_Жилой комплекс";
             this.textBoxLinkTestFilename.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxLinkTestFilename.WordWrap = false;
-            this.textBoxLinkTestFilename.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLink_KeyUp);
+            this.textBoxLinkTestFilename.TextChanged += new System.EventHandler(this.textBoxLink_TextChanged);
             // 
             // textBoxLinkPrefix
             // 
@@ -470,7 +467,7 @@
             this.textBoxLinkPrefix.Name = "textBoxLinkPrefix";
             this.textBoxLinkPrefix.Size = new System.Drawing.Size(354, 20);
             this.textBoxLinkPrefix.TabIndex = 2;
-            this.textBoxLinkPrefix.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLink_KeyUp);
+            this.textBoxLinkPrefix.TextChanged += new System.EventHandler(this.textBoxLink_TextChanged);
             // 
             // label10
             // 
@@ -511,7 +508,7 @@
             this.textBoxLinkSeparator.Name = "textBoxLinkSeparator";
             this.textBoxLinkSeparator.Size = new System.Drawing.Size(354, 20);
             this.textBoxLinkSeparator.TabIndex = 2;
-            this.textBoxLinkSeparator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLink_KeyUp);
+            this.textBoxLinkSeparator.TextChanged += new System.EventHandler(this.textBoxLink_TextChanged);
             // 
             // label5
             // 
@@ -746,7 +743,7 @@
         private System.Windows.Forms.TextBox textBoxLinkSeparator;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBoxEnabledForLinkedFiles;
-        private System.Windows.Forms.Label label1LinkTestResult;
+        private System.Windows.Forms.Label labelLinkTestResult;
         private System.Windows.Forms.NumericUpDown numericLinkIgnoreLastChars;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numericLinkIgnoreFirstChars;

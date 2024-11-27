@@ -12,11 +12,7 @@ Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RevitWorksets
 {
@@ -31,11 +27,11 @@ namespace RevitWorksets
 
         public string GetWorksetName(string filename)
         {
-            if(string.IsNullOrEmpty(separator)) separator = "_";
+            if (string.IsNullOrEmpty(separator)) separator = "_";
 
             char separatorChar = separator[0];
             string[] arr = filename.Split(separatorChar);
-            if(partNumberAfterSeparator >= arr.Length)
+            if (partNumberAfterSeparator >= arr.Length)
             {
                 partNumberAfterSeparator = arr.Length - 1;
             }

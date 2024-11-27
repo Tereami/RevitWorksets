@@ -11,14 +11,12 @@ This code is provided 'as is'. Author disclaims any implied warranty.
 Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
 #region usings
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Autodesk.Revit.DB; 
-using Autodesk.Revit.UI;
-using System.IO;
-using System.Xml;
+using System.Linq;
 #endregion
 
 namespace RevitWorksets
@@ -32,18 +30,19 @@ namespace RevitWorksets
             Trace.Listeners.Add(new RbsLogger.Logger("Worksets"));
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
-            if(!doc.IsWorkshared)
+            if (!doc.IsWorkshared)
             {
                 message = "Файл не является файлом совместной работы";
-                Debug.WriteLine("File is not workshared document");
+                Debug.WriteLine("File is not workshared");
                 return Result.Failed; ;
             }
 
-            (InfosStorage storage, string xmlPath) = InfosStorage.Load();
+            string xmlPath = "";
+            InfosStorage storage = InfosStorage.Load(out xmlPath);
 
             List<RevitCategory> allCategories = RevitCategory.LoadAllCategories(doc);
             FormMain form = new FormMain(storage, xmlPath, allCategories);
-            if(form.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            if (form.ShowDialog() != System.Windows.Forms.DialogResult.OK)
             {
                 Debug.WriteLine("CANCELLED");
                 return Result.Cancelled;
@@ -56,7 +55,7 @@ namespace RevitWorksets
             {
                 t.Start("Создание рабочих наборов");
 
-                if (storage.WorksetByCetagoryEnabled && storage.worksetsByCategory != null && storage.worksetsByCategory.Count > 0)
+                if (storage.WorksetByCategoryEnabled && storage.worksetsByCategory != null && storage.worksetsByCategory.Count > 0)
                 {
                     Debug.WriteLine("Start worksets by category");
                     foreach (WorksetByCategory wb in storage.worksetsByCategory)
@@ -157,8 +156,8 @@ namespace RevitWorksets
                     }
                     Debug.WriteLine("Finish worksets by type names");
                 }
-                
-                if(storage.worksetByParameter != null && storage.WorksetByParameterEnabled)
+
+                if (storage.worksetByParameter != null && storage.WorksetByParameterEnabled)
                 {
                     Debug.WriteLine("Start worksets by parameters");
                     string paramName = storage.worksetByParameter.ParameterName;
@@ -167,7 +166,7 @@ namespace RevitWorksets
                         Parameter p = elem.LookupParameter(paramName);
                         if (p == null) continue;
                         if (!p.HasValue) continue;
-                        if(p.StorageType != StorageType.String)
+                        if (p.StorageType != StorageType.String)
                         {
                             string errmsg = "Parameter is not string: " + paramName;
                             Debug.WriteLine(errmsg);
@@ -217,7 +216,7 @@ namespace RevitWorksets
                     Debug.WriteLine("Finish worksets for link files");
                 }
 
-                if(storage.worksetByDwg != null && storage.WorksetByDwgEnabled)
+                if (storage.worksetByDwg != null && storage.WorksetByDwgEnabled)
                 {
                     Debug.WriteLine("Start workset for dwg links");
                     WorksetByDwg wsetDwg = storage.worksetByDwg;
@@ -231,12 +230,12 @@ namespace RevitWorksets
                         .ToList();
 
                     Workset dwgWorkset = WorksetBy.GetOrCreateWorkset(doc, wsetDwg.WorksetName);
-                    foreach(ImportInstance ii in  linkInstances) 
+                    foreach (ImportInstance ii in linkInstances)
                     {
                         WorksetBy.SetWorkset(ii, dwgWorkset);
                         counter++;
                     }
-                    foreach(CADLinkType linkType in linkTypes)
+                    foreach (CADLinkType linkType in linkTypes)
                     {
                         WorksetBy.SetWorkset(linkType, dwgWorkset);
                         counter++;
@@ -249,9 +248,9 @@ namespace RevitWorksets
                 Debug.WriteLine("Commit succeded");
             }
 
-            string msg = $"Обработано элементов: {counter}"; 
+            string msg = $"Обработано элементов: {counter}";
             List<string> emptyWorksetsNames = WorksetTool.GetEmptyWorksets(doc);
-            if(emptyWorksetsNames.Count > 0)
+            if (emptyWorksetsNames.Count > 0)
             {
                 msg += System.Environment.NewLine + "Обнаружены пустые рабочие наборы! Их можно удалить вручную:\n";
                 msg += string.Join(System.Environment.NewLine, emptyWorksetsNames);

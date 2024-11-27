@@ -1,9 +1,6 @@
 ﻿using Autodesk.Revit.DB;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RevitWorksets
 {
@@ -13,10 +10,9 @@ namespace RevitWorksets
 
         public string DisplayName { get; set; }
 
-        public RevitCategory(BuiltInCategory bic)
+        public RevitCategory()
         {
-            InternalCategory = bic;
-            DisplayName = LabelUtils.GetLabelFor(bic);
+
         }
 
         public override string ToString()
@@ -26,22 +22,23 @@ namespace RevitWorksets
 
         public static List<RevitCategory> LoadAllCategories(Document doc)
         {
-            List<BuiltInCategory> bics = new List<BuiltInCategory>();
-            foreach(Category cat in doc.Settings.Categories)
+            List<RevitCategory> cats = new List<RevitCategory>();
+            foreach (Category cat in doc.Settings.Categories)
             {
-                if(cat.CategoryType == CategoryType.Model || 
+                if (cat.CategoryType == CategoryType.Model ||
                     (cat.CategoryType == CategoryType.Annotation && cat.AllowsBoundParameters))
                 {
-                    BuiltInCategory bic = (BuiltInCategory)cat.Id.IntegerValue;
-                    bics.Add(bic);
+                    string name = cat.Name;
+                    if (string.IsNullOrEmpty(name)) continue;
+
+                    BuiltInCategory bic = (BuiltInCategory)cat.Id.GetValue();
+
+                    RevitCategory rc = new RevitCategory { DisplayName = name, InternalCategory = bic };
+                    cats.Add(rc);
                 }
             }
 
-            List<RevitCategory> cats = bics
-                .Where(i => Category.IsBuiltInCategoryValid(i))
-                .Select(i => new RevitCategory(i))
-                .OrderBy(i => i.DisplayName)
-                .ToList();
+            cats = cats.OrderBy(i => i.DisplayName).ToList();
             return cats;
         }
     }

@@ -10,9 +10,7 @@ as long as you credit the author by linking back and license your new creations 
 This code is provided 'as is'. Author disclaims any implied warranty.
 Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
-using Autodesk.Revit.DB;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -25,7 +23,7 @@ namespace RevitWorksets
     {
         public string ConfigurationName;
 
-        public bool WorksetByCetagoryEnabled = true;
+        public bool WorksetByCategoryEnabled = true;
         public BindingList<WorksetByCategory> worksetsByCategory = new BindingList<WorksetByCategory>();
 
         public bool WorksetByFamilyEnabled = true;
@@ -40,7 +38,7 @@ namespace RevitWorksets
 
         public bool WorksetByLinkEnabled = true;
         public WorksetByLink worksetByLink = new WorksetByLink();
-            
+
 
         public bool WorksetByDwgEnabled = true;
         public WorksetByDwg worksetByDwg = new WorksetByDwg { WorksetName = "_DWG" };
@@ -50,10 +48,10 @@ namespace RevitWorksets
 
         }
 
-        public static (InfosStorage model, string xmlPath) Load()
+        public static InfosStorage Load(out string xmlPath)
         {
             InfosStorage model;
-            string xmlPath = InfosStorage.GetLastUsedXmlFile();
+            xmlPath = InfosStorage.GetLastUsedXmlFile();
             if (string.IsNullOrEmpty(xmlPath) || !File.Exists(xmlPath))
             {
                 model = InfosStorage.GetDefault();
@@ -63,7 +61,7 @@ namespace RevitWorksets
             {
                 model = InfosStorage.LoadFromFile(xmlPath);
             }
-            return (model, xmlPath);
+            return model;
         }
 
         public static string GetLastUsedXmlFile()
@@ -126,7 +124,7 @@ namespace RevitWorksets
                 Debug.WriteLine("Create directory " + rbspath);
                 Directory.CreateDirectory(rbspath);
             }
-            string solutionName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            string solutionName = "RevitWorksets"; //System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             string solutionFolder = Path.Combine(rbspath, solutionName);
             if (!Directory.Exists(solutionFolder))
             {
@@ -143,7 +141,7 @@ namespace RevitWorksets
         {
             Debug.WriteLine("Start save settings to file " + xmlPath);
 
-            if(string.IsNullOrEmpty(xmlPath))
+            if (string.IsNullOrEmpty(xmlPath))
                 throw new Exception("XmlPath is empty");
 
             if (File.Exists(xmlPath)) File.Delete(xmlPath);

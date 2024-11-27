@@ -10,11 +10,11 @@ as long as you credit the author by linking back and license your new creations 
 This code is provided 'as is'. Author disclaims any implied warranty.
 Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
+using Autodesk.Revit.DB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Autodesk.Revit.DB;
 
 namespace RevitWorksets
 {
@@ -28,8 +28,12 @@ namespace RevitWorksets
         {
             get
             {
-                if(revitCategories == null || revitCategories.Count == 0) return "None";
+                if (revitCategories == null || revitCategories.Count == 0) return "None";
+#if R2017 || R2018 || R2019
+                string cats = revitCategories.Count + " категорий";
+#else
                 string cats = string.Join(", ", revitCategories.Select(i => LabelUtils.GetLabelFor(i)));
+#endif
                 return cats;
             }
         }

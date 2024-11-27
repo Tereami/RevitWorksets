@@ -1,9 +1,4 @@
 ﻿using Autodesk.Revit.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RevitWorksets
 {
@@ -17,18 +12,6 @@ namespace RevitWorksets
 #else
             return (int)elemid.Value;
 #endif
-        }
-
-        public static string GetCategoryTranslatedName(BuiltInCategory revitcategory)
-        {
-            string name = LabelUtils.GetLabelFor(revitcategory);
-            return name;
-        }
-
-        public static string GetCategoryInternalName(BuiltInCategory revitCategory)
-        {
-            string name = Enum.GetName(typeof(BuiltInCategory), revitCategory);
-            return name;
         }
     }
 }

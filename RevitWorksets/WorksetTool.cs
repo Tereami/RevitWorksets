@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Autodesk.Revit.DB;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autodesk.Revit.DB;
 
 namespace RevitWorksets
 {
@@ -19,11 +16,11 @@ namespace RevitWorksets
                 .ToWorksets()
                 .ToList();
 
-            foreach(Workset w in wids)
+            foreach (Workset w in wids)
             {
                 ElementWorksetFilter wfilter = new ElementWorksetFilter(w.Id);
                 FilteredElementCollector col = new FilteredElementCollector(doc).WherePasses(wfilter);
-                if(col.GetElementCount() == 0)
+                if (col.GetElementCount() == 0)
                 {
                     wnames.Add(w.Name);
                 }
