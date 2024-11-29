@@ -78,6 +78,7 @@
             this.labelHelp3 = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
             this.labelHelp0 = new System.Windows.Forms.Label();
+            this.checkBoxNoEmptyWorksets = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategories)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -696,6 +697,16 @@
             this.labelHelp0.Visible = false;
             this.labelHelp0.Click += new System.EventHandler(this.labelHelp_Click);
             // 
+            // checkBoxNoEmptyWorksets
+            // 
+            this.checkBoxNoEmptyWorksets.AutoSize = true;
+            this.checkBoxNoEmptyWorksets.Location = new System.Drawing.Point(557, 822);
+            this.checkBoxNoEmptyWorksets.Name = "checkBoxNoEmptyWorksets";
+            this.checkBoxNoEmptyWorksets.Size = new System.Drawing.Size(220, 17);
+            this.checkBoxNoEmptyWorksets.TabIndex = 8;
+            this.checkBoxNoEmptyWorksets.Text = "Не создавать пустые рабочие наборы";
+            this.checkBoxNoEmptyWorksets.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AcceptButton = this.buttonOk;
@@ -703,6 +714,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(1069, 866);
+            this.Controls.Add(this.checkBoxNoEmptyWorksets);
             this.Controls.Add(this.labelHelp0);
             this.Controls.Add(this.labelHelp6);
             this.Controls.Add(this.labelHelp3);
@@ -803,5 +815,6 @@
         private System.Windows.Forms.Label labelHelp6;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Label labelHelp0;
+        private System.Windows.Forms.CheckBox checkBoxNoEmptyWorksets;
     }
 }

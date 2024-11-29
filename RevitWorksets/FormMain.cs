@@ -134,6 +134,8 @@ namespace RevitWorksets
             checkBoxEnabledForDwgLinks.Checked = Model.WorksetByDwgEnabled;
             textBoxDwgWorksetName.Text = Model.worksetByDwg.WorksetName;
 
+            checkBoxNoEmptyWorksets.Checked = Model.NoEmptyWorksets;
+
             this.Refresh();
         }
 
@@ -155,6 +157,8 @@ namespace RevitWorksets
 
             Model.WorksetByDwgEnabled = checkBoxEnabledForDwgLinks.Checked;
             Model.worksetByDwg.WorksetName = textBoxDwgWorksetName.Text;
+
+            Model.NoEmptyWorksets = checkBoxNoEmptyWorksets.Checked;
         }
 
         private void buttonLoad_Click(object sender, EventArgs e)
@@ -202,6 +206,7 @@ namespace RevitWorksets
             flagLinkWorksetEnabled = false;
             XmlPath = null;
             Model = InfosStorage.GetDefault();
+            BuildWindow();
             ReloadTablesDatasource();
             InfosStorage.ClearLastXmlPath();
             MakeHelpLabelsVisible(true);
@@ -222,12 +227,21 @@ namespace RevitWorksets
             Debug.WriteLine("OK clicked");
 
             if (checkBoxEnabledByCategory.Checked
-                && checkBoxEnableByFamilyName.Checked
-                && checkBoxEnableByType.Checked)
-
+                || checkBoxEnableByType.Checked
+                || checkBoxEnableByFamilyName.Checked
+                || checkBoxEnabledByParameter.Checked
+                || checkBoxEnabledForLinkedFiles.Checked
+                || checkBoxEnabledForDwgLinks.Checked)
+            {
                 UpdateModel();
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Не выбраны пункты для обработки!");
+                return;
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -273,6 +287,7 @@ namespace RevitWorksets
             if (rowNumber == -1) return;
 
             WorksetByFamily clickedRow = Model.worksetsByFamily[rowNumber];
+            if (clickedRow.FamilyNames == null) clickedRow.FamilyNames = new List<string>();
 
             FormSelectTextValues formSelect = new FormSelectTextValues("Задайте префиксы имен семейств", clickedRow.FamilyNames);
             if (formSelect.ShowDialog() != DialogResult.OK) return;
@@ -287,6 +302,7 @@ namespace RevitWorksets
             if (rowNumber == -1) return;
 
             WorksetByType clickedRow = Model.worksetsByType[rowNumber];
+            if (clickedRow.TypeNames == null) clickedRow.TypeNames = new List<string>();
 
             FormSelectTextValues formSelect = new FormSelectTextValues("Задайте префиксы имен типов", clickedRow.TypeNames);
             if (formSelect.ShowDialog() != DialogResult.OK) return;

@@ -21,8 +21,6 @@ namespace RevitWorksets
     [Serializable]
     public class InfosStorage
     {
-        public string ConfigurationName;
-
         public bool WorksetByCategoryEnabled = true;
         public BindingList<WorksetByCategory> worksetsByCategory = new BindingList<WorksetByCategory>();
 
@@ -42,6 +40,8 @@ namespace RevitWorksets
 
         public bool WorksetByDwgEnabled = true;
         public WorksetByDwg worksetByDwg = new WorksetByDwg { WorksetName = "_DWG" };
+
+        public bool NoEmptyWorksets = false;
 
         public InfosStorage()
         {
