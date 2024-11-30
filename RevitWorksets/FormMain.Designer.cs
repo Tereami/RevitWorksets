@@ -29,740 +29,762 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.buttonOk = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonLoad = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelHelp1 = new System.Windows.Forms.Label();
-            this.dataGridViewCategories = new System.Windows.Forms.DataGridView();
-            this.checkBoxEnabledByCategory = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelHelp2 = new System.Windows.Forms.Label();
-            this.dataGridViewFamilies = new System.Windows.Forms.DataGridView();
-            this.checkBoxEnableByFamilyName = new System.Windows.Forms.CheckBox();
-            this.labelHelp6 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxWorksetNameParameter = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBoxEnabledByParameter = new System.Windows.Forms.CheckBox();
-            this.buttonHelp = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.labelHelp5 = new System.Windows.Forms.Label();
-            this.labelHelp4 = new System.Windows.Forms.Label();
-            this.labelLinkTestResult = new System.Windows.Forms.Label();
-            this.numericLinkIgnoreLastChars = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericLinkIgnoreFirstChars = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numericLinkPartNumber = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxLinkTestFilename = new System.Windows.Forms.TextBox();
-            this.textBoxLinkPrefix = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxLinkSeparator = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBoxEnabledForLinkedFiles = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBoxDwgWorksetName = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.checkBoxEnabledForDwgLinks = new System.Windows.Forms.CheckBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewTypes = new System.Windows.Forms.DataGridView();
-            this.checkBoxEnableByType = new System.Windows.Forms.CheckBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.labelHelp3 = new System.Windows.Forms.Label();
-            this.buttonReset = new System.Windows.Forms.Button();
-            this.labelHelp0 = new System.Windows.Forms.Label();
-            this.checkBoxNoEmptyWorksets = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategories)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFamilies)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericLinkIgnoreLastChars)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericLinkIgnoreFirstChars)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericLinkPartNumber)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTypes)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            this.SuspendLayout();
+            buttonOk = new System.Windows.Forms.Button();
+            buttonCancel = new System.Windows.Forms.Button();
+            buttonSave = new System.Windows.Forms.Button();
+            buttonLoad = new System.Windows.Forms.Button();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            labelHelp1 = new System.Windows.Forms.Label();
+            dataGridViewCategories = new System.Windows.Forms.DataGridView();
+            checkBoxEnabledByCategory = new System.Windows.Forms.CheckBox();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            labelHelp2 = new System.Windows.Forms.Label();
+            dataGridViewFamilies = new System.Windows.Forms.DataGridView();
+            checkBoxEnableByFamilyName = new System.Windows.Forms.CheckBox();
+            labelHelp6 = new System.Windows.Forms.Label();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            label3 = new System.Windows.Forms.Label();
+            textBoxWorksetNameParameter = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            checkBoxEnabledByParameter = new System.Windows.Forms.CheckBox();
+            buttonHelp = new System.Windows.Forms.Button();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            labelHelp5 = new System.Windows.Forms.Label();
+            labelHelp4 = new System.Windows.Forms.Label();
+            labelLinkTestResult = new System.Windows.Forms.Label();
+            numericLinkIgnoreLastChars = new System.Windows.Forms.NumericUpDown();
+            label7 = new System.Windows.Forms.Label();
+            numericLinkIgnoreFirstChars = new System.Windows.Forms.NumericUpDown();
+            label6 = new System.Windows.Forms.Label();
+            numericLinkPartNumber = new System.Windows.Forms.NumericUpDown();
+            label4 = new System.Windows.Forms.Label();
+            textBoxLinkTestFilename = new System.Windows.Forms.TextBox();
+            textBoxLinkPrefix = new System.Windows.Forms.TextBox();
+            label10 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            textBoxLinkSeparator = new System.Windows.Forms.TextBox();
+            label5 = new System.Windows.Forms.Label();
+            checkBoxEnabledForLinkedFiles = new System.Windows.Forms.CheckBox();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            textBoxDwgWorksetName = new System.Windows.Forms.TextBox();
+            label13 = new System.Windows.Forms.Label();
+            checkBoxEnabledForDwgLinks = new System.Windows.Forms.CheckBox();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            dataGridViewTypes = new System.Windows.Forms.DataGridView();
+            checkBoxEnableByType = new System.Windows.Forms.CheckBox();
+            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            labelHelp3 = new System.Windows.Forms.Label();
+            buttonReset = new System.Windows.Forms.Button();
+            labelHelp0 = new System.Windows.Forms.Label();
+            checkBoxNoEmptyWorksets = new System.Windows.Forms.CheckBox();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).BeginInit();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewFamilies).BeginInit();
+            groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericLinkIgnoreLastChars).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericLinkIgnoreFirstChars).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericLinkPartNumber).BeginInit();
+            groupBox5.SuspendLayout();
+            groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTypes).BeginInit();
+            statusStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // buttonOk
             // 
-            this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOk.Location = new System.Drawing.Point(820, 818);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.TabIndex = 1;
-            this.buttonOk.Text = "OK";
-            this.buttonOk.UseVisualStyleBackColor = true;
-            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
+            buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            buttonOk.Location = new System.Drawing.Point(957, 944);
+            buttonOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonOk.Name = "buttonOk";
+            buttonOk.Size = new System.Drawing.Size(88, 27);
+            buttonOk.TabIndex = 1;
+            buttonOk.Text = "OK";
+            buttonOk.UseVisualStyleBackColor = true;
+            buttonOk.Click += buttonOk_Click;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(901, 818);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 1;
-            this.buttonCancel.Text = "Отмена";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            buttonCancel.Location = new System.Drawing.Point(1051, 944);
+            buttonCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new System.Drawing.Size(88, 27);
+            buttonCancel.TabIndex = 1;
+            buttonCancel.Text = "Отмена";
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // buttonSave
             // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSave.Location = new System.Drawing.Point(12, 818);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(125, 23);
-            this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "Сохранить в файл";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            buttonSave.Location = new System.Drawing.Point(14, 944);
+            buttonSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new System.Drawing.Size(146, 27);
+            buttonSave.TabIndex = 2;
+            buttonSave.Text = "Сохранить в файл";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonLoad.Location = new System.Drawing.Point(143, 818);
-            this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(125, 23);
-            this.buttonLoad.TabIndex = 2;
-            this.buttonLoad.Text = "Загрузить из файла";
-            this.buttonLoad.UseVisualStyleBackColor = true;
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            buttonLoad.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            buttonLoad.Location = new System.Drawing.Point(167, 944);
+            buttonLoad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonLoad.Name = "buttonLoad";
+            buttonLoad.Size = new System.Drawing.Size(146, 27);
+            buttonLoad.TabIndex = 2;
+            buttonLoad.Text = "Загрузить из файла";
+            buttonLoad.UseVisualStyleBackColor = true;
+            buttonLoad.Click += buttonLoad_Click;
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.labelHelp1);
-            this.groupBox1.Controls.Add(this.dataGridViewCategories);
-            this.groupBox1.Controls.Add(this.checkBoxEnabledByCategory);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(517, 350);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "1. Рабочий набор по категории";
+            groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            groupBox1.Controls.Add(labelHelp1);
+            groupBox1.Controls.Add(dataGridViewCategories);
+            groupBox1.Controls.Add(checkBoxEnabledByCategory);
+            groupBox1.Location = new System.Drawing.Point(14, 14);
+            groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Size = new System.Drawing.Size(603, 404);
+            groupBox1.TabIndex = 3;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "1. Рабочий набор по категории";
             // 
             // labelHelp1
             // 
-            this.labelHelp1.AutoEllipsis = true;
-            this.labelHelp1.BackColor = System.Drawing.Color.Yellow;
-            this.labelHelp1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelHelp1.Location = new System.Drawing.Point(166, 133);
-            this.labelHelp1.Name = "labelHelp1";
-            this.labelHelp1.Size = new System.Drawing.Size(154, 37);
-            this.labelHelp1.TabIndex = 2;
-            this.labelHelp1.Text = "← щелкните по пустой строке, чтобы добавить";
-            this.labelHelp1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHelp1.Visible = false;
-            this.labelHelp1.Click += new System.EventHandler(this.labelHelp_Click);
+            labelHelp1.AutoEllipsis = true;
+            labelHelp1.BackColor = System.Drawing.Color.Yellow;
+            labelHelp1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            labelHelp1.Location = new System.Drawing.Point(194, 153);
+            labelHelp1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelHelp1.Name = "labelHelp1";
+            labelHelp1.Size = new System.Drawing.Size(179, 42);
+            labelHelp1.TabIndex = 2;
+            labelHelp1.Text = "← щелкните по пустой строке, чтобы добавить";
+            labelHelp1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelHelp1.Visible = false;
+            labelHelp1.Click += labelHelp_Click;
             // 
             // dataGridViewCategories
             // 
-            this.dataGridViewCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCategories.Location = new System.Drawing.Point(7, 44);
-            this.dataGridViewCategories.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridViewCategories.Name = "dataGridViewCategories";
-            this.dataGridViewCategories.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewCategories.Size = new System.Drawing.Size(501, 313);
-            this.dataGridViewCategories.TabIndex = 1;
-            this.dataGridViewCategories.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCategories_CellContentClick);
-            this.dataGridViewCategories.EnabledChanged += new System.EventHandler(this.dataGridView_EnabledChanged);
+            dataGridViewCategories.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridViewCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCategories.Location = new System.Drawing.Point(8, 51);
+            dataGridViewCategories.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            dataGridViewCategories.Name = "dataGridViewCategories";
+            dataGridViewCategories.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            dataGridViewCategories.Size = new System.Drawing.Size(584, 361);
+            dataGridViewCategories.TabIndex = 1;
+            dataGridViewCategories.CellContentClick += dataGridViewCategories_CellContentClick;
+            dataGridViewCategories.EnabledChanged += dataGridView_EnabledChanged;
             // 
             // checkBoxEnabledByCategory
             // 
-            this.checkBoxEnabledByCategory.AutoSize = true;
-            this.checkBoxEnabledByCategory.Checked = true;
-            this.checkBoxEnabledByCategory.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEnabledByCategory.Location = new System.Drawing.Point(7, 19);
-            this.checkBoxEnabledByCategory.Name = "checkBoxEnabledByCategory";
-            this.checkBoxEnabledByCategory.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxEnabledByCategory.TabIndex = 0;
-            this.checkBoxEnabledByCategory.Text = "Активировать";
-            this.checkBoxEnabledByCategory.UseVisualStyleBackColor = true;
-            this.checkBoxEnabledByCategory.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            checkBoxEnabledByCategory.AutoSize = true;
+            checkBoxEnabledByCategory.Checked = true;
+            checkBoxEnabledByCategory.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEnabledByCategory.Location = new System.Drawing.Point(8, 22);
+            checkBoxEnabledByCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxEnabledByCategory.Name = "checkBoxEnabledByCategory";
+            checkBoxEnabledByCategory.Size = new System.Drawing.Size(102, 19);
+            checkBoxEnabledByCategory.TabIndex = 0;
+            checkBoxEnabledByCategory.Text = "Активировать";
+            checkBoxEnabledByCategory.UseVisualStyleBackColor = true;
+            checkBoxEnabledByCategory.CheckedChanged += chkbxInGroup_CheckedChanged;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.labelHelp2);
-            this.groupBox2.Controls.Add(this.dataGridViewFamilies);
-            this.groupBox2.Controls.Add(this.checkBoxEnableByFamilyName);
-            this.groupBox2.Location = new System.Drawing.Point(12, 368);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(517, 444);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "2. Рабочий набор по префиксу имени семейства";
+            groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            groupBox2.Controls.Add(labelHelp2);
+            groupBox2.Controls.Add(dataGridViewFamilies);
+            groupBox2.Controls.Add(checkBoxEnableByFamilyName);
+            groupBox2.Location = new System.Drawing.Point(14, 425);
+            groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Size = new System.Drawing.Size(603, 512);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "2. Рабочий набор по префиксу имени семейства";
             // 
             // labelHelp2
             // 
-            this.labelHelp2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelHelp2.AutoEllipsis = true;
-            this.labelHelp2.BackColor = System.Drawing.Color.Yellow;
-            this.labelHelp2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelHelp2.Location = new System.Drawing.Point(27, 108);
-            this.labelHelp2.Name = "labelHelp2";
-            this.labelHelp2.Size = new System.Drawing.Size(185, 37);
-            this.labelHelp2.TabIndex = 2;
-            this.labelHelp2.Text = "← удалить строку - щелкнуть по первой ячейке и Delete";
-            this.labelHelp2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHelp2.Visible = false;
-            this.labelHelp2.Click += new System.EventHandler(this.labelHelp_Click);
+            labelHelp2.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            labelHelp2.AutoEllipsis = true;
+            labelHelp2.BackColor = System.Drawing.Color.Yellow;
+            labelHelp2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            labelHelp2.Location = new System.Drawing.Point(31, 125);
+            labelHelp2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelHelp2.Name = "labelHelp2";
+            labelHelp2.Size = new System.Drawing.Size(216, 42);
+            labelHelp2.TabIndex = 2;
+            labelHelp2.Text = "← удалить строку - щелкнуть по первой ячейке и Delete";
+            labelHelp2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelHelp2.Visible = false;
+            labelHelp2.Click += labelHelp_Click;
             // 
             // dataGridViewFamilies
             // 
-            this.dataGridViewFamilies.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewFamilies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewFamilies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFamilies.Location = new System.Drawing.Point(7, 44);
-            this.dataGridViewFamilies.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridViewFamilies.Name = "dataGridViewFamilies";
-            this.dataGridViewFamilies.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewFamilies.Size = new System.Drawing.Size(502, 392);
-            this.dataGridViewFamilies.TabIndex = 1;
-            this.dataGridViewFamilies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFamilies_CellContentClick);
-            this.dataGridViewFamilies.EnabledChanged += new System.EventHandler(this.dataGridView_EnabledChanged);
+            dataGridViewFamilies.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridViewFamilies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewFamilies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewFamilies.Location = new System.Drawing.Point(8, 51);
+            dataGridViewFamilies.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            dataGridViewFamilies.Name = "dataGridViewFamilies";
+            dataGridViewFamilies.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            dataGridViewFamilies.Size = new System.Drawing.Size(586, 452);
+            dataGridViewFamilies.TabIndex = 1;
+            dataGridViewFamilies.CellContentClick += dataGridViewFamilies_CellContentClick;
+            dataGridViewFamilies.EnabledChanged += dataGridView_EnabledChanged;
             // 
             // checkBoxEnableByFamilyName
             // 
-            this.checkBoxEnableByFamilyName.AutoSize = true;
-            this.checkBoxEnableByFamilyName.Checked = true;
-            this.checkBoxEnableByFamilyName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEnableByFamilyName.Location = new System.Drawing.Point(7, 19);
-            this.checkBoxEnableByFamilyName.Name = "checkBoxEnableByFamilyName";
-            this.checkBoxEnableByFamilyName.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxEnableByFamilyName.TabIndex = 0;
-            this.checkBoxEnableByFamilyName.Text = "Активировать";
-            this.checkBoxEnableByFamilyName.UseVisualStyleBackColor = true;
-            this.checkBoxEnableByFamilyName.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            checkBoxEnableByFamilyName.AutoSize = true;
+            checkBoxEnableByFamilyName.Checked = true;
+            checkBoxEnableByFamilyName.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEnableByFamilyName.Location = new System.Drawing.Point(8, 22);
+            checkBoxEnableByFamilyName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxEnableByFamilyName.Name = "checkBoxEnableByFamilyName";
+            checkBoxEnableByFamilyName.Size = new System.Drawing.Size(102, 19);
+            checkBoxEnableByFamilyName.TabIndex = 0;
+            checkBoxEnableByFamilyName.Text = "Активировать";
+            checkBoxEnableByFamilyName.UseVisualStyleBackColor = true;
+            checkBoxEnableByFamilyName.CheckedChanged += chkbxInGroup_CheckedChanged;
             // 
             // labelHelp6
             // 
-            this.labelHelp6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelHelp6.AutoEllipsis = true;
-            this.labelHelp6.BackColor = System.Drawing.Color.Yellow;
-            this.labelHelp6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelHelp6.Location = new System.Drawing.Point(33, 757);
-            this.labelHelp6.Name = "labelHelp6";
-            this.labelHelp6.Size = new System.Drawing.Size(461, 56);
-            this.labelHelp6.TabIndex = 2;
-            this.labelHelp6.Text = resources.GetString("labelHelp6.Text");
-            this.labelHelp6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHelp6.Visible = false;
-            this.labelHelp6.Click += new System.EventHandler(this.labelHelp_Click);
+            labelHelp6.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            labelHelp6.AutoEllipsis = true;
+            labelHelp6.BackColor = System.Drawing.Color.Yellow;
+            labelHelp6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            labelHelp6.Location = new System.Drawing.Point(38, 873);
+            labelHelp6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelHelp6.Name = "labelHelp6";
+            labelHelp6.Size = new System.Drawing.Size(538, 64);
+            labelHelp6.TabIndex = 2;
+            labelHelp6.Text = resources.GetString("labelHelp6.Text");
+            labelHelp6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelHelp6.Visible = false;
+            labelHelp6.Click += labelHelp_Click;
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBoxWorksetNameParameter);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.checkBoxEnabledByParameter);
-            this.groupBox3.Location = new System.Drawing.Point(540, 368);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(517, 113);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "4. Рабочий набор по параметру";
+            groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            groupBox3.Controls.Add(label3);
+            groupBox3.Controls.Add(textBoxWorksetNameParameter);
+            groupBox3.Controls.Add(label1);
+            groupBox3.Controls.Add(checkBoxEnabledByParameter);
+            groupBox3.Location = new System.Drawing.Point(630, 425);
+            groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Size = new System.Drawing.Size(603, 130);
+            groupBox3.TabIndex = 2;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "4. Рабочий набор по параметру";
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(8, 72);
-            this.label3.Margin = new System.Windows.Forms.Padding(5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(465, 36);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Элементы будут помещены в рабочий набор, имя которого указано в этом параметре. П" +
-    "араметр может быть указан в Типе, формулой в загружаемом семействе и т.д.";
+            label3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            label3.Location = new System.Drawing.Point(9, 83);
+            label3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(542, 42);
+            label3.TabIndex = 3;
+            label3.Text = "Элементы будут помещены в рабочий набор, имя которого указано в этом параметре. Параметр может быть указан в Типе, формулой в загружаемом семействе и т.д.";
             // 
             // textBoxWorksetNameParameter
             // 
-            this.textBoxWorksetNameParameter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxWorksetNameParameter.Location = new System.Drawing.Point(155, 44);
-            this.textBoxWorksetNameParameter.Name = "textBoxWorksetNameParameter";
-            this.textBoxWorksetNameParameter.Size = new System.Drawing.Size(354, 20);
-            this.textBoxWorksetNameParameter.TabIndex = 2;
+            textBoxWorksetNameParameter.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBoxWorksetNameParameter.Location = new System.Drawing.Point(181, 51);
+            textBoxWorksetNameParameter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxWorksetNameParameter.Name = "textBoxWorksetNameParameter";
+            textBoxWorksetNameParameter.Size = new System.Drawing.Size(412, 23);
+            textBoxWorksetNameParameter.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 44);
-            this.label1.Margin = new System.Windows.Forms.Padding(5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Имя параметра:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 51);
+            label1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(96, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Имя параметра:";
             // 
             // checkBoxEnabledByParameter
             // 
-            this.checkBoxEnabledByParameter.AutoSize = true;
-            this.checkBoxEnabledByParameter.Checked = true;
-            this.checkBoxEnabledByParameter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEnabledByParameter.Location = new System.Drawing.Point(7, 19);
-            this.checkBoxEnabledByParameter.Name = "checkBoxEnabledByParameter";
-            this.checkBoxEnabledByParameter.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxEnabledByParameter.TabIndex = 0;
-            this.checkBoxEnabledByParameter.Text = "Активировать";
-            this.checkBoxEnabledByParameter.UseVisualStyleBackColor = true;
-            this.checkBoxEnabledByParameter.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            checkBoxEnabledByParameter.AutoSize = true;
+            checkBoxEnabledByParameter.Checked = true;
+            checkBoxEnabledByParameter.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEnabledByParameter.Location = new System.Drawing.Point(8, 22);
+            checkBoxEnabledByParameter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxEnabledByParameter.Name = "checkBoxEnabledByParameter";
+            checkBoxEnabledByParameter.Size = new System.Drawing.Size(102, 19);
+            checkBoxEnabledByParameter.TabIndex = 0;
+            checkBoxEnabledByParameter.Text = "Активировать";
+            checkBoxEnabledByParameter.UseVisualStyleBackColor = true;
+            checkBoxEnabledByParameter.CheckedChanged += chkbxInGroup_CheckedChanged;
             // 
             // buttonHelp
             // 
-            this.buttonHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonHelp.Location = new System.Drawing.Point(982, 818);
-            this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(75, 23);
-            this.buttonHelp.TabIndex = 4;
-            this.buttonHelp.Text = "Справка";
-            this.buttonHelp.UseVisualStyleBackColor = true;
-            this.buttonHelp.Click += new System.EventHandler(this.FormMain_HelpButtonClicked);
+            buttonHelp.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            buttonHelp.Location = new System.Drawing.Point(1146, 944);
+            buttonHelp.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonHelp.Name = "buttonHelp";
+            buttonHelp.Size = new System.Drawing.Size(88, 27);
+            buttonHelp.TabIndex = 4;
+            buttonHelp.Text = "Справка";
+            buttonHelp.UseVisualStyleBackColor = true;
+            buttonHelp.Click += FormMain_HelpButtonClicked;
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox4.Controls.Add(this.labelHelp5);
-            this.groupBox4.Controls.Add(this.labelHelp4);
-            this.groupBox4.Controls.Add(this.labelLinkTestResult);
-            this.groupBox4.Controls.Add(this.numericLinkIgnoreLastChars);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.numericLinkIgnoreFirstChars);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.numericLinkPartNumber);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.textBoxLinkTestFilename);
-            this.groupBox4.Controls.Add(this.textBoxLinkPrefix);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.textBoxLinkSeparator);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.checkBoxEnabledForLinkedFiles);
-            this.groupBox4.Location = new System.Drawing.Point(540, 487);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(517, 235);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "5. Рабочий набор для связанных файлов";
+            groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            groupBox4.Controls.Add(labelHelp5);
+            groupBox4.Controls.Add(labelHelp4);
+            groupBox4.Controls.Add(labelLinkTestResult);
+            groupBox4.Controls.Add(numericLinkIgnoreLastChars);
+            groupBox4.Controls.Add(label7);
+            groupBox4.Controls.Add(numericLinkIgnoreFirstChars);
+            groupBox4.Controls.Add(label6);
+            groupBox4.Controls.Add(numericLinkPartNumber);
+            groupBox4.Controls.Add(label4);
+            groupBox4.Controls.Add(textBoxLinkTestFilename);
+            groupBox4.Controls.Add(textBoxLinkPrefix);
+            groupBox4.Controls.Add(label10);
+            groupBox4.Controls.Add(label9);
+            groupBox4.Controls.Add(label8);
+            groupBox4.Controls.Add(textBoxLinkSeparator);
+            groupBox4.Controls.Add(label5);
+            groupBox4.Controls.Add(checkBoxEnabledForLinkedFiles);
+            groupBox4.Location = new System.Drawing.Point(630, 562);
+            groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Size = new System.Drawing.Size(603, 271);
+            groupBox4.TabIndex = 2;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "5. Рабочий набор для связанных файлов";
             // 
             // labelHelp5
             // 
-            this.labelHelp5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelHelp5.AutoEllipsis = true;
-            this.labelHelp5.BackColor = System.Drawing.Color.Yellow;
-            this.labelHelp5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelHelp5.Location = new System.Drawing.Point(176, 170);
-            this.labelHelp5.Name = "labelHelp5";
-            this.labelHelp5.Size = new System.Drawing.Size(186, 23);
-            this.labelHelp5.TabIndex = 2;
-            this.labelHelp5.Text = "↓ можно потренироваться здесь";
-            this.labelHelp5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHelp5.Visible = false;
-            this.labelHelp5.Click += new System.EventHandler(this.labelHelp_Click);
+            labelHelp5.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            labelHelp5.AutoEllipsis = true;
+            labelHelp5.BackColor = System.Drawing.Color.Yellow;
+            labelHelp5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            labelHelp5.Location = new System.Drawing.Point(205, 196);
+            labelHelp5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelHelp5.Name = "labelHelp5";
+            labelHelp5.Size = new System.Drawing.Size(217, 26);
+            labelHelp5.TabIndex = 2;
+            labelHelp5.Text = "↓ можно потренироваться здесь";
+            labelHelp5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelHelp5.Visible = false;
+            labelHelp5.Click += labelHelp_Click;
             // 
             // labelHelp4
             // 
-            this.labelHelp4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelHelp4.AutoEllipsis = true;
-            this.labelHelp4.BackColor = System.Drawing.Color.Yellow;
-            this.labelHelp4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelHelp4.Location = new System.Drawing.Point(222, 0);
-            this.labelHelp4.Name = "labelHelp4";
-            this.labelHelp4.Size = new System.Drawing.Size(295, 89);
-            this.labelHelp4.TabIndex = 2;
-            this.labelHelp4.Text = resources.GetString("labelHelp4.Text");
-            this.labelHelp4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHelp4.Visible = false;
-            this.labelHelp4.Click += new System.EventHandler(this.labelHelp_Click);
+            labelHelp4.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            labelHelp4.AutoEllipsis = true;
+            labelHelp4.BackColor = System.Drawing.Color.Yellow;
+            labelHelp4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            labelHelp4.Location = new System.Drawing.Point(259, 0);
+            labelHelp4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelHelp4.Name = "labelHelp4";
+            labelHelp4.Size = new System.Drawing.Size(344, 102);
+            labelHelp4.TabIndex = 2;
+            labelHelp4.Text = resources.GetString("labelHelp4.Text");
+            labelHelp4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelHelp4.Visible = false;
+            labelHelp4.Click += labelHelp_Click;
             // 
             // labelLinkTestResult
             // 
-            this.labelLinkTestResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLinkTestResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelLinkTestResult.Location = new System.Drawing.Point(291, 195);
-            this.labelLinkTestResult.Name = "labelLinkTestResult";
-            this.labelLinkTestResult.Size = new System.Drawing.Size(218, 20);
-            this.labelLinkTestResult.TabIndex = 4;
-            this.labelLinkTestResult.Text = "...";
-            this.labelLinkTestResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelLinkTestResult.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            labelLinkTestResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            labelLinkTestResult.Location = new System.Drawing.Point(340, 225);
+            labelLinkTestResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelLinkTestResult.Name = "labelLinkTestResult";
+            labelLinkTestResult.Size = new System.Drawing.Size(254, 23);
+            labelLinkTestResult.TabIndex = 4;
+            labelLinkTestResult.Text = "...";
+            labelLinkTestResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericLinkIgnoreLastChars
             // 
-            this.numericLinkIgnoreLastChars.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericLinkIgnoreLastChars.Location = new System.Drawing.Point(155, 119);
-            this.numericLinkIgnoreLastChars.Name = "numericLinkIgnoreLastChars";
-            this.numericLinkIgnoreLastChars.Size = new System.Drawing.Size(354, 20);
-            this.numericLinkIgnoreLastChars.TabIndex = 3;
-            this.numericLinkIgnoreLastChars.ValueChanged += new System.EventHandler(this.textBoxLink_TextChanged);
+            numericLinkIgnoreLastChars.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            numericLinkIgnoreLastChars.Location = new System.Drawing.Point(181, 137);
+            numericLinkIgnoreLastChars.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numericLinkIgnoreLastChars.Name = "numericLinkIgnoreLastChars";
+            numericLinkIgnoreLastChars.Size = new System.Drawing.Size(413, 23);
+            numericLinkIgnoreLastChars.TabIndex = 3;
+            numericLinkIgnoreLastChars.ValueChanged += textBoxLink_TextChanged;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 122);
-            this.label7.Margin = new System.Windows.Forms.Padding(5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Отбросить в конце:";
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(16, 141);
+            label7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(114, 15);
+            label7.TabIndex = 1;
+            label7.Text = "Отбросить в конце:";
             // 
             // numericLinkIgnoreFirstChars
             // 
-            this.numericLinkIgnoreFirstChars.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericLinkIgnoreFirstChars.Location = new System.Drawing.Point(155, 93);
-            this.numericLinkIgnoreFirstChars.Name = "numericLinkIgnoreFirstChars";
-            this.numericLinkIgnoreFirstChars.Size = new System.Drawing.Size(354, 20);
-            this.numericLinkIgnoreFirstChars.TabIndex = 3;
-            this.numericLinkIgnoreFirstChars.ValueChanged += new System.EventHandler(this.textBoxLink_TextChanged);
+            numericLinkIgnoreFirstChars.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            numericLinkIgnoreFirstChars.Location = new System.Drawing.Point(181, 107);
+            numericLinkIgnoreFirstChars.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numericLinkIgnoreFirstChars.Name = "numericLinkIgnoreFirstChars";
+            numericLinkIgnoreFirstChars.Size = new System.Drawing.Size(413, 23);
+            numericLinkIgnoreFirstChars.TabIndex = 3;
+            numericLinkIgnoreFirstChars.ValueChanged += textBoxLink_TextChanged;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 96);
-            this.label6.Margin = new System.Windows.Forms.Padding(5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Отбросить в начале:";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(16, 111);
+            label6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(120, 15);
+            label6.TabIndex = 1;
+            label6.Text = "Отбросить в начале:";
             // 
             // numericLinkPartNumber
             // 
-            this.numericLinkPartNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericLinkPartNumber.Location = new System.Drawing.Point(155, 67);
-            this.numericLinkPartNumber.Name = "numericLinkPartNumber";
-            this.numericLinkPartNumber.Size = new System.Drawing.Size(354, 20);
-            this.numericLinkPartNumber.TabIndex = 3;
-            this.numericLinkPartNumber.ValueChanged += new System.EventHandler(this.textBoxLink_TextChanged);
+            numericLinkPartNumber.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            numericLinkPartNumber.Location = new System.Drawing.Point(181, 77);
+            numericLinkPartNumber.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numericLinkPartNumber.Name = "numericLinkPartNumber";
+            numericLinkPartNumber.Size = new System.Drawing.Size(413, 23);
+            numericLinkPartNumber.TabIndex = 3;
+            numericLinkPartNumber.ValueChanged += textBoxLink_TextChanged;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 70);
-            this.label4.Margin = new System.Windows.Forms.Padding(5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Номер части:";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(16, 81);
+            label4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(82, 15);
+            label4.TabIndex = 1;
+            label4.Text = "Номер части:";
             // 
             // textBoxLinkTestFilename
             // 
-            this.textBoxLinkTestFilename.Location = new System.Drawing.Point(17, 195);
-            this.textBoxLinkTestFilename.Name = "textBoxLinkTestFilename";
-            this.textBoxLinkTestFilename.Size = new System.Drawing.Size(228, 20);
-            this.textBoxLinkTestFilename.TabIndex = 2;
-            this.textBoxLinkTestFilename.Text = "0123_КР.П_Жилой комплекс";
-            this.textBoxLinkTestFilename.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxLinkTestFilename.WordWrap = false;
-            this.textBoxLinkTestFilename.TextChanged += new System.EventHandler(this.textBoxLink_TextChanged);
+            textBoxLinkTestFilename.Location = new System.Drawing.Point(20, 225);
+            textBoxLinkTestFilename.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxLinkTestFilename.Name = "textBoxLinkTestFilename";
+            textBoxLinkTestFilename.Size = new System.Drawing.Size(265, 23);
+            textBoxLinkTestFilename.TabIndex = 2;
+            textBoxLinkTestFilename.Text = "0123_КР.П_Жилой комплекс";
+            textBoxLinkTestFilename.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBoxLinkTestFilename.WordWrap = false;
+            textBoxLinkTestFilename.TextChanged += textBoxLink_TextChanged;
             // 
             // textBoxLinkPrefix
             // 
-            this.textBoxLinkPrefix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLinkPrefix.Location = new System.Drawing.Point(155, 145);
-            this.textBoxLinkPrefix.Name = "textBoxLinkPrefix";
-            this.textBoxLinkPrefix.Size = new System.Drawing.Size(354, 20);
-            this.textBoxLinkPrefix.TabIndex = 2;
-            this.textBoxLinkPrefix.TextChanged += new System.EventHandler(this.textBoxLink_TextChanged);
+            textBoxLinkPrefix.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBoxLinkPrefix.Location = new System.Drawing.Point(181, 167);
+            textBoxLinkPrefix.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxLinkPrefix.Name = "textBoxLinkPrefix";
+            textBoxLinkPrefix.Size = new System.Drawing.Size(412, 23);
+            textBoxLinkPrefix.TabIndex = 2;
+            textBoxLinkPrefix.TextChanged += textBoxLink_TextChanged;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(258, 198);
-            this.label10.Margin = new System.Windows.Forms.Padding(5);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(19, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = ">>";
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(301, 228);
+            label10.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(23, 15);
+            label10.TabIndex = 1;
+            label10.Text = ">>";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 174);
-            this.label9.Margin = new System.Windows.Forms.Padding(5);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Проверка:";
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(16, 201);
+            label9.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(64, 15);
+            label9.TabIndex = 1;
+            label9.Text = "Проверка:";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 148);
-            this.label8.Margin = new System.Windows.Forms.Padding(5);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Префикс имени набора:";
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(16, 171);
+            label8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(142, 15);
+            label8.TabIndex = 1;
+            label8.Text = "Префикс имени набора:";
             // 
             // textBoxLinkSeparator
             // 
-            this.textBoxLinkSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLinkSeparator.Location = new System.Drawing.Point(155, 41);
-            this.textBoxLinkSeparator.MaxLength = 1;
-            this.textBoxLinkSeparator.Name = "textBoxLinkSeparator";
-            this.textBoxLinkSeparator.Size = new System.Drawing.Size(354, 20);
-            this.textBoxLinkSeparator.TabIndex = 2;
-            this.textBoxLinkSeparator.TextChanged += new System.EventHandler(this.textBoxLink_TextChanged);
+            textBoxLinkSeparator.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBoxLinkSeparator.Location = new System.Drawing.Point(181, 47);
+            textBoxLinkSeparator.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxLinkSeparator.MaxLength = 1;
+            textBoxLinkSeparator.Name = "textBoxLinkSeparator";
+            textBoxLinkSeparator.Size = new System.Drawing.Size(412, 23);
+            textBoxLinkSeparator.TabIndex = 2;
+            textBoxLinkSeparator.TextChanged += textBoxLink_TextChanged;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 44);
-            this.label5.Margin = new System.Windows.Forms.Padding(5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Разделитель имени:";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(16, 51);
+            label5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(117, 15);
+            label5.TabIndex = 1;
+            label5.Text = "Разделитель имени:";
             // 
             // checkBoxEnabledForLinkedFiles
             // 
-            this.checkBoxEnabledForLinkedFiles.AutoSize = true;
-            this.checkBoxEnabledForLinkedFiles.Checked = true;
-            this.checkBoxEnabledForLinkedFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEnabledForLinkedFiles.Location = new System.Drawing.Point(7, 19);
-            this.checkBoxEnabledForLinkedFiles.Name = "checkBoxEnabledForLinkedFiles";
-            this.checkBoxEnabledForLinkedFiles.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxEnabledForLinkedFiles.TabIndex = 0;
-            this.checkBoxEnabledForLinkedFiles.Text = "Активировать";
-            this.checkBoxEnabledForLinkedFiles.UseVisualStyleBackColor = true;
-            this.checkBoxEnabledForLinkedFiles.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            checkBoxEnabledForLinkedFiles.AutoSize = true;
+            checkBoxEnabledForLinkedFiles.Checked = true;
+            checkBoxEnabledForLinkedFiles.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEnabledForLinkedFiles.Location = new System.Drawing.Point(8, 22);
+            checkBoxEnabledForLinkedFiles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxEnabledForLinkedFiles.Name = "checkBoxEnabledForLinkedFiles";
+            checkBoxEnabledForLinkedFiles.Size = new System.Drawing.Size(102, 19);
+            checkBoxEnabledForLinkedFiles.TabIndex = 0;
+            checkBoxEnabledForLinkedFiles.Text = "Активировать";
+            checkBoxEnabledForLinkedFiles.UseVisualStyleBackColor = true;
+            checkBoxEnabledForLinkedFiles.CheckedChanged += chkbxInGroup_CheckedChanged;
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox5.Controls.Add(this.textBoxDwgWorksetName);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.checkBoxEnabledForDwgLinks);
-            this.groupBox5.Location = new System.Drawing.Point(540, 728);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(517, 84);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "6. Рабочий набор для DWG/DXF связей";
+            groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            groupBox5.Controls.Add(textBoxDwgWorksetName);
+            groupBox5.Controls.Add(label13);
+            groupBox5.Controls.Add(checkBoxEnabledForDwgLinks);
+            groupBox5.Location = new System.Drawing.Point(630, 840);
+            groupBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Size = new System.Drawing.Size(603, 97);
+            groupBox5.TabIndex = 2;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "6. Рабочий набор для DWG/DXF связей";
             // 
             // textBoxDwgWorksetName
             // 
-            this.textBoxDwgWorksetName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxDwgWorksetName.Location = new System.Drawing.Point(155, 44);
-            this.textBoxDwgWorksetName.Name = "textBoxDwgWorksetName";
-            this.textBoxDwgWorksetName.Size = new System.Drawing.Size(354, 20);
-            this.textBoxDwgWorksetName.TabIndex = 2;
+            textBoxDwgWorksetName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBoxDwgWorksetName.Location = new System.Drawing.Point(181, 51);
+            textBoxDwgWorksetName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxDwgWorksetName.Name = "textBoxDwgWorksetName";
+            textBoxDwgWorksetName.Size = new System.Drawing.Size(412, 23);
+            textBoxDwgWorksetName.TabIndex = 2;
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 44);
-            this.label13.Margin = new System.Windows.Forms.Padding(5);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(120, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Имя рабочего набора:";
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(16, 51);
+            label13.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(132, 15);
+            label13.TabIndex = 1;
+            label13.Text = "Имя рабочего набора:";
             // 
             // checkBoxEnabledForDwgLinks
             // 
-            this.checkBoxEnabledForDwgLinks.AutoSize = true;
-            this.checkBoxEnabledForDwgLinks.Checked = true;
-            this.checkBoxEnabledForDwgLinks.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEnabledForDwgLinks.Location = new System.Drawing.Point(7, 19);
-            this.checkBoxEnabledForDwgLinks.Name = "checkBoxEnabledForDwgLinks";
-            this.checkBoxEnabledForDwgLinks.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxEnabledForDwgLinks.TabIndex = 0;
-            this.checkBoxEnabledForDwgLinks.Text = "Активировать";
-            this.checkBoxEnabledForDwgLinks.UseVisualStyleBackColor = true;
-            this.checkBoxEnabledForDwgLinks.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            checkBoxEnabledForDwgLinks.AutoSize = true;
+            checkBoxEnabledForDwgLinks.Checked = true;
+            checkBoxEnabledForDwgLinks.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEnabledForDwgLinks.Location = new System.Drawing.Point(8, 22);
+            checkBoxEnabledForDwgLinks.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxEnabledForDwgLinks.Name = "checkBoxEnabledForDwgLinks";
+            checkBoxEnabledForDwgLinks.Size = new System.Drawing.Size(102, 19);
+            checkBoxEnabledForDwgLinks.TabIndex = 0;
+            checkBoxEnabledForDwgLinks.Text = "Активировать";
+            checkBoxEnabledForDwgLinks.UseVisualStyleBackColor = true;
+            checkBoxEnabledForDwgLinks.CheckedChanged += chkbxInGroup_CheckedChanged;
             // 
             // groupBox6
             // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox6.Controls.Add(this.dataGridViewTypes);
-            this.groupBox6.Controls.Add(this.checkBoxEnableByType);
-            this.groupBox6.Location = new System.Drawing.Point(540, 12);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(517, 350);
-            this.groupBox6.TabIndex = 3;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "3. Рабочий набор по имени типа";
+            groupBox6.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            groupBox6.Controls.Add(dataGridViewTypes);
+            groupBox6.Controls.Add(checkBoxEnableByType);
+            groupBox6.Location = new System.Drawing.Point(630, 14);
+            groupBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox6.Size = new System.Drawing.Size(603, 404);
+            groupBox6.TabIndex = 3;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "3. Рабочий набор по имени типа";
             // 
             // dataGridViewTypes
             // 
-            this.dataGridViewTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTypes.Location = new System.Drawing.Point(7, 44);
-            this.dataGridViewTypes.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridViewTypes.Name = "dataGridViewTypes";
-            this.dataGridViewTypes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewTypes.Size = new System.Drawing.Size(501, 313);
-            this.dataGridViewTypes.TabIndex = 1;
-            this.dataGridViewTypes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewByType_CellContentClick);
-            this.dataGridViewTypes.EnabledChanged += new System.EventHandler(this.dataGridView_EnabledChanged);
+            dataGridViewTypes.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridViewTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTypes.Location = new System.Drawing.Point(8, 51);
+            dataGridViewTypes.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            dataGridViewTypes.Name = "dataGridViewTypes";
+            dataGridViewTypes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            dataGridViewTypes.Size = new System.Drawing.Size(584, 361);
+            dataGridViewTypes.TabIndex = 1;
+            dataGridViewTypes.CellContentClick += dataGridViewByType_CellContentClick;
+            dataGridViewTypes.EnabledChanged += dataGridView_EnabledChanged;
             // 
             // checkBoxEnableByType
             // 
-            this.checkBoxEnableByType.AutoSize = true;
-            this.checkBoxEnableByType.Checked = true;
-            this.checkBoxEnableByType.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEnableByType.Location = new System.Drawing.Point(7, 19);
-            this.checkBoxEnableByType.Name = "checkBoxEnableByType";
-            this.checkBoxEnableByType.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxEnableByType.TabIndex = 0;
-            this.checkBoxEnableByType.Text = "Активировать";
-            this.checkBoxEnableByType.UseVisualStyleBackColor = true;
-            this.checkBoxEnableByType.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            checkBoxEnableByType.AutoSize = true;
+            checkBoxEnableByType.Checked = true;
+            checkBoxEnableByType.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEnableByType.Location = new System.Drawing.Point(8, 22);
+            checkBoxEnableByType.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxEnableByType.Name = "checkBoxEnableByType";
+            checkBoxEnableByType.Size = new System.Drawing.Size(102, 19);
+            checkBoxEnableByType.TabIndex = 0;
+            checkBoxEnableByType.Text = "Активировать";
+            checkBoxEnableByType.UseVisualStyleBackColor = true;
+            checkBoxEnableByType.CheckedChanged += chkbxInGroup_CheckedChanged;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 844);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1069, 22);
-            this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel1 });
+            statusStrip1.Location = new System.Drawing.Point(0, 977);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            statusStrip1.Size = new System.Drawing.Size(1247, 22);
+            statusStrip1.TabIndex = 7;
+            statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // labelHelp3
             // 
-            this.labelHelp3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelHelp3.AutoEllipsis = true;
-            this.labelHelp3.BackColor = System.Drawing.Color.Yellow;
-            this.labelHelp3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelHelp3.Location = new System.Drawing.Point(716, 6);
-            this.labelHelp3.Name = "labelHelp3";
-            this.labelHelp3.Size = new System.Drawing.Size(297, 49);
-            this.labelHelp3.TabIndex = 2;
-            this.labelHelp3.Text = "← рабочие наборы применяются последовательно: Категория - Семейство - Тип и так д" +
-    "алее. Последующее правило имеет больший приоритет";
-            this.labelHelp3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHelp3.Visible = false;
-            this.labelHelp3.Click += new System.EventHandler(this.labelHelp_Click);
+            labelHelp3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            labelHelp3.AutoEllipsis = true;
+            labelHelp3.BackColor = System.Drawing.Color.Yellow;
+            labelHelp3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            labelHelp3.Location = new System.Drawing.Point(835, 7);
+            labelHelp3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelHelp3.Name = "labelHelp3";
+            labelHelp3.Size = new System.Drawing.Size(346, 56);
+            labelHelp3.TabIndex = 2;
+            labelHelp3.Text = "← рабочие наборы применяются последовательно: Категория - Семейство - Тип и так далее. Последующее правило имеет больший приоритет";
+            labelHelp3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelHelp3.Visible = false;
+            labelHelp3.Click += labelHelp_Click;
             // 
             // buttonReset
             // 
-            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonReset.Location = new System.Drawing.Point(274, 818);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(125, 23);
-            this.buttonReset.TabIndex = 2;
-            this.buttonReset.Text = "Сбросить настройки";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            buttonReset.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            buttonReset.Location = new System.Drawing.Point(320, 944);
+            buttonReset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonReset.Name = "buttonReset";
+            buttonReset.Size = new System.Drawing.Size(146, 27);
+            buttonReset.TabIndex = 2;
+            buttonReset.Text = "Сбросить настройки";
+            buttonReset.UseVisualStyleBackColor = true;
+            buttonReset.Click += buttonReset_Click;
             // 
             // labelHelp0
             // 
-            this.labelHelp0.AutoEllipsis = true;
-            this.labelHelp0.BackColor = System.Drawing.Color.Yellow;
-            this.labelHelp0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelHelp0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelHelp0.Location = new System.Drawing.Point(375, 246);
-            this.labelHelp0.Name = "labelHelp0";
-            this.labelHelp0.Size = new System.Drawing.Size(313, 85);
-            this.labelHelp0.TabIndex = 2;
-            this.labelHelp0.Text = "Подсказки отображаются только при первом  запуске. Чтобы скрыть, щелкните по любо" +
-    "й подсказке!";
-            this.labelHelp0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHelp0.Visible = false;
-            this.labelHelp0.Click += new System.EventHandler(this.labelHelp_Click);
+            labelHelp0.AutoEllipsis = true;
+            labelHelp0.BackColor = System.Drawing.Color.Yellow;
+            labelHelp0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            labelHelp0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            labelHelp0.Location = new System.Drawing.Point(438, 284);
+            labelHelp0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelHelp0.Name = "labelHelp0";
+            labelHelp0.Size = new System.Drawing.Size(365, 98);
+            labelHelp0.TabIndex = 2;
+            labelHelp0.Text = "Подсказки отображаются только при первом  запуске. Чтобы скрыть, щелкните по любой подсказке!";
+            labelHelp0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelHelp0.Visible = false;
+            labelHelp0.Click += labelHelp_Click;
             // 
             // checkBoxNoEmptyWorksets
             // 
-            this.checkBoxNoEmptyWorksets.AutoSize = true;
-            this.checkBoxNoEmptyWorksets.Location = new System.Drawing.Point(557, 822);
-            this.checkBoxNoEmptyWorksets.Name = "checkBoxNoEmptyWorksets";
-            this.checkBoxNoEmptyWorksets.Size = new System.Drawing.Size(220, 17);
-            this.checkBoxNoEmptyWorksets.TabIndex = 8;
-            this.checkBoxNoEmptyWorksets.Text = "Не создавать пустые рабочие наборы";
-            this.checkBoxNoEmptyWorksets.UseVisualStyleBackColor = true;
+            checkBoxNoEmptyWorksets.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            checkBoxNoEmptyWorksets.AutoSize = true;
+            checkBoxNoEmptyWorksets.Location = new System.Drawing.Point(650, 948);
+            checkBoxNoEmptyWorksets.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxNoEmptyWorksets.Name = "checkBoxNoEmptyWorksets";
+            checkBoxNoEmptyWorksets.Size = new System.Drawing.Size(235, 19);
+            checkBoxNoEmptyWorksets.TabIndex = 8;
+            checkBoxNoEmptyWorksets.Text = "Не создавать пустые рабочие наборы";
+            checkBoxNoEmptyWorksets.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
-            this.AcceptButton = this.buttonOk;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(1069, 866);
-            this.Controls.Add(this.checkBoxNoEmptyWorksets);
-            this.Controls.Add(this.labelHelp0);
-            this.Controls.Add(this.labelHelp6);
-            this.Controls.Add(this.labelHelp3);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.buttonHelp);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonReset);
-            this.Controls.Add(this.buttonLoad);
-            this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonOk);
-            this.HelpButton = true;
-            this.MaximumSize = new System.Drawing.Size(1085, 1080);
-            this.MinimumSize = new System.Drawing.Size(1085, 680);
-            this.Name = "FormMain";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bim-Starter Рабочие наборы";
-            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.FormMain_HelpButtonClicked);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategories)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFamilies)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericLinkIgnoreLastChars)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericLinkIgnoreFirstChars)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericLinkPartNumber)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTypes)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AcceptButton = buttonOk;
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton = buttonCancel;
+            ClientSize = new System.Drawing.Size(1247, 999);
+            Controls.Add(checkBoxNoEmptyWorksets);
+            Controls.Add(labelHelp0);
+            Controls.Add(labelHelp6);
+            Controls.Add(labelHelp3);
+            Controls.Add(statusStrip1);
+            Controls.Add(buttonHelp);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox5);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox6);
+            Controls.Add(groupBox1);
+            Controls.Add(buttonReset);
+            Controls.Add(buttonLoad);
+            Controls.Add(buttonSave);
+            Controls.Add(buttonCancel);
+            Controls.Add(buttonOk);
+            HelpButton = true;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximumSize = new System.Drawing.Size(1263, 1240);
+            MinimumSize = new System.Drawing.Size(1263, 779);
+            Name = "FormMain";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Bim-Starter Рабочие наборы";
+            HelpButtonClicked += FormMain_HelpButtonClicked;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewFamilies).EndInit();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericLinkIgnoreLastChars).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericLinkIgnoreFirstChars).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericLinkPartNumber).EndInit();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTypes).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
