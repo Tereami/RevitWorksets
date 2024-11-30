@@ -17,8 +17,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 #endregion
 
+[assembly: AssemblyVersion("2.0.*")]
 namespace RevitWorksets
 {
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
@@ -50,7 +52,7 @@ namespace RevitWorksets
             storage = form.Model;
             xmlPath = form.XmlPath;
 
-            List<WorksetElements> worksetsAndElements = new List<WorksetElements>();
+            List<WorksetElementsStorage> worksetsAndElements = new List<WorksetElementsStorage>();
 
             if (storage.WorksetByCategoryEnabled && storage.worksetsByCategory != null && storage.worksetsByCategory.Count > 0)
             {
@@ -58,7 +60,6 @@ namespace RevitWorksets
                 foreach (WorksetByCategory wb in storage.worksetsByCategory)
                 {
                     Debug.WriteLine("Current workset: " + wb.WorksetName);
-                    //Workset wset = wb.GetWorkset(doc);
                     List<BuiltInCategory> cats = wb.revitCategories;
                     if (cats == null) continue;
                     if (cats.Count == 0) continue;
@@ -74,16 +75,9 @@ namespace RevitWorksets
                             .ToList();
 
                         worksetElements.AddRange(elems);
-
-
-                        //foreach (Element elem in elems)
-                        //{
-                        //    WorksetBy.SetWorkset(elem, wset);
-                        //    counter++;
-                        //}
                     }
                     Debug.WriteLine("Elements found:" + worksetElements.Count);
-                    worksetsAndElements.Add(new WorksetElements(wb.WorksetName, worksetElements));
+                    worksetsAndElements.Add(new WorksetElementsStorage(wb.WorksetName, worksetElements));
                 }
                 Debug.WriteLine("Finish worksets by category");
             }
@@ -100,7 +94,6 @@ namespace RevitWorksets
                 foreach (WorksetByFamily wb in storage.worksetsByFamily)
                 {
                     Debug.WriteLine("Current workset:" + wb.WorksetName);
-                    //Workset wset = wb.GetWorkset(doc);
 
                     List<string> famNamePrefixes = wb.FamilyNames;
                     if (famNamePrefixes == null) continue;
@@ -115,15 +108,9 @@ namespace RevitWorksets
                             .ToList();
 
                         worksetElements.AddRange(curFamIns);
-
-                        //foreach (FamilyInstance fi in curFamIns)
-                        //{
-                        //    WorksetBy.SetWorkset(fi, wset);
-                        //    counter++;
-                        //}
                     }
                     Debug.WriteLine("Elements found:" + worksetElements.Count);
-                    worksetsAndElements.Add(new WorksetElements(wb.WorksetName, worksetElements));
+                    worksetsAndElements.Add(new WorksetElementsStorage(wb.WorksetName, worksetElements));
                 }
                 Debug.WriteLine("Finish worksets by family names");
             }
@@ -141,7 +128,6 @@ namespace RevitWorksets
                 foreach (WorksetByType wb in storage.worksetsByType)
                 {
                     Debug.WriteLine("Current workset:" + wb.WorksetName);
-                    //Workset wset = wb.GetWorkset(doc);
                     List<string> typeNames = wb.TypeNames;
                     if (typeNames == null) continue;
                     if (typeNames.Count == 0) continue;
@@ -159,13 +145,11 @@ namespace RevitWorksets
 
                             if (elemType.Name.StartsWith(typeName))
                             {
-                                //WorksetBy.SetWorkset(elem, wset);
-                                //counter++;
                                 worksetElements.Add(elem);
                             }
                         }
                     }
-                    worksetsAndElements.Add(new WorksetElements(wb.WorksetName, worksetElements));
+                    worksetsAndElements.Add(new WorksetElementsStorage(wb.WorksetName, worksetElements));
                     Debug.WriteLine("Elements found:" + worksetElements.Count);
                 }
                 Debug.WriteLine("Finish worksets by type names");
@@ -188,11 +172,8 @@ namespace RevitWorksets
                     }
                     string wsetParamValue = p.AsString();
 
-                    worksetsAndElements.Add(new WorksetElements(wsetParamValue, elem));
+                    worksetsAndElements.Add(new WorksetElementsStorage(wsetParamValue, elem));
 
-                    //Workset wsetByparamval = WorksetBy.GetOrCreateWorkset(doc, wsetParamValue);
-                    //WorksetBy.SetWorkset(elem, wsetByparamval);
-                    //counter++;
                 }
                 Debug.WriteLine("Finish worksets by parameter");
             }
@@ -231,12 +212,8 @@ namespace RevitWorksets
                             linkFileType
                         };
 
-                    worksetsAndElements.Add(new WorksetElements(linkWorksetName, curElements));
+                    worksetsAndElements.Add(new WorksetElementsStorage(linkWorksetName, curElements));
 
-                    //Workset linkWorkset = WorksetBy.GetOrCreateWorkset(doc, linkWorksetName);
-                    //WorksetBy.SetWorkset(rli, linkWorkset);
-                    //WorksetBy.SetWorkset(linkFileType, linkWorkset);
-                    //counter++;
                 }
                 Debug.WriteLine("Finish worksets for link files");
             }
@@ -258,29 +235,13 @@ namespace RevitWorksets
                 dwgElements.AddRange(linkInstances);
                 dwgElements.AddRange(linkTypes);
 
-                worksetsAndElements.Add(new WorksetElements(wsetDwg.WorksetName, dwgElements));
+                worksetsAndElements.Add(new WorksetElementsStorage(wsetDwg.WorksetName, dwgElements));
 
-                //Workset dwgWorkset = WorksetBy.GetOrCreateWorkset(doc, wsetDwg.WorksetName);
-                //foreach (ImportInstance ii in linkInstances)
-                //{
-                //    WorksetBy.SetWorkset(ii, dwgWorkset);
-                //    counter++;
-                //}
-                //foreach (CADLinkType linkType in linkTypes)
-                //{
-                //    WorksetBy.SetWorkset(linkType, dwgWorkset);
-                //    counter++;
-                //}
                 Debug.WriteLine("Finish workset for dwg links");
             }
 
-            //Debug.WriteLine("Commit started");
-            //t.Commit();
-            //Debug.WriteLine("Commit succeded");
-
-
             Dictionary<string, int> worksetNamesAndElementsCount = new Dictionary<string, int>();
-            foreach (WorksetElements welems in worksetsAndElements)
+            foreach (WorksetElementsStorage welems in worksetsAndElements)
             {
                 string wsetName = welems.Name;
                 int elemsCount = welems.Elements.Count;
@@ -295,7 +256,7 @@ namespace RevitWorksets
                 Debug.WriteLine("Removing empty worksets");
                 for (int i = 0; i < worksetsAndElements.Count; i++)
                 {
-                    WorksetElements welems = worksetsAndElements[i];
+                    WorksetElementsStorage welems = worksetsAndElements[i];
                     string name = welems.Name;
                     int elemsSumCount = worksetNamesAndElementsCount[name];
                     if (elemsSumCount == 0)
@@ -326,7 +287,6 @@ namespace RevitWorksets
                     string name = kvp.Key;
 
                     bool checkNotExists = WorksetTable.IsWorksetNameUnique(doc, name);
-
                     if (checkNotExists)
                     {
                         Debug.WriteLine("Create workset: " + name);
@@ -346,7 +306,7 @@ namespace RevitWorksets
 
                 doc.Regenerate();
 
-                foreach (WorksetElements wsetElems in worksetsAndElements)
+                foreach (WorksetElementsStorage wsetElems in worksetsAndElements)
                 {
                     string name = wsetElems.Name;
                     Workset wset = worksetsDict[name];
@@ -360,18 +320,8 @@ namespace RevitWorksets
                 t.Commit();
             }
 
-
             string msg = $"Обработано элементов: {counter}{Environment.NewLine}Создано рабочих наборов: {newWorksetsCreated}";
 
-
-            //List<string> emptyWorksetsNames = WorksetTool.GetEmptyWorksets(doc);
-
-            //if (emptyWorksetsNames.Count > 0)
-            //{
-            //    msg += System.Environment.NewLine + "Обнаружены пустые рабочие наборы! Их можно удалить вручную:\n";
-            //    msg += string.Join(System.Environment.NewLine, emptyWorksetsNames);
-            //    Debug.WriteLine("Empty worksets found: " + msg);
-            //}
             BalloonTip.Show("Завершено!", msg);
             storage.Save(xmlPath);
             Debug.WriteLine(msg);

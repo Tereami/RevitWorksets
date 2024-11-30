@@ -33,6 +33,9 @@ namespace RevitWorksets
             Debug.WriteLine("Initialize main window");
             InitializeComponent();
 
+            string appVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Text = $"{this.Text} v. {appVersion}";
+
             XmlPath = xmlPath;
             AllCategories = allCategories;
             Model = newSettings;
