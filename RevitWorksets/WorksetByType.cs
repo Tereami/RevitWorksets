@@ -21,7 +21,7 @@ namespace RevitWorksets
     {
         public List<string> TypeNames;
 
-        [DisplayName("Префиксы")]
+        [DisplayName("Prefix")]
         public string TypesText
         {
             get
@@ -41,8 +41,8 @@ namespace RevitWorksets
         {
             BindingList<WorksetByType> list = new BindingList<WorksetByType>
             {
-                new WorksetByType { WorksetName = "Архитектура", TypeNames = new List<string> { "100_", "101_", "102_", "103_" } },
-                new WorksetByType { WorksetName = "MEP", TypeNames = new List<string> { "40", "50", "60", "70", "80", "90" } }
+                new WorksetByType { WorksetName = MyStrings.DefaultWorksetArch, TypeNames = new List<string> { "100_", "101_", "102_", "103_" } },
+                new WorksetByType { WorksetName = MyStrings.DefaultWorksetMep, TypeNames = new List<string> { "40", "50", "60", "70", "80", "90" } }
             };
             return list;
         }

@@ -23,7 +23,7 @@ namespace RevitWorksets
     {
         public List<BuiltInCategory> revitCategories;
 
-        [DisplayName("Категории")]
+        [DisplayName("Categories")]
         public string CategoriesText
         {
             get
@@ -49,7 +49,7 @@ namespace RevitWorksets
             {
                 new WorksetByCategory
                 {
-                    WorksetName = "Опалубка",
+                    WorksetName = MyStrings.DefaultWorksetConcrete,
                     revitCategories = new List<BuiltInCategory> {
                     BuiltInCategory.OST_Walls,
                     BuiltInCategory.OST_Floors,
@@ -58,7 +58,7 @@ namespace RevitWorksets
                 },
                 new WorksetByCategory
                 {
-                    WorksetName = "Арматура",
+                    WorksetName = MyStrings.DefaultWorksetRebar,
                     revitCategories = new List<BuiltInCategory> {
                    BuiltInCategory.OST_Rebar,
                    BuiltInCategory.OST_AreaRein,
@@ -67,7 +67,7 @@ namespace RevitWorksets
                 },
                 new WorksetByCategory
                 {
-                    WorksetName = "Общие уровни и сетки",
+                    WorksetName = MyStrings.DefaultWorksetGrids,
                     revitCategories = new List<BuiltInCategory>  {
                     BuiltInCategory.OST_Grids,
                     BuiltInCategory.OST_Levels,

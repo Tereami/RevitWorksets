@@ -29,7 +29,7 @@ namespace RevitWorksets
             string tabName = "BIM-STARTER TEST";
             try { application.CreateRibbonTab(tabName); } catch { }
 
-            string panelName = "Рабочие наборы";
+            string panelName = MyStrings.PluginName;
             RibbonPanel panel = null;
             List<RibbonPanel> tryPanels = application.GetRibbonPanels(tabName).Where(i => i.Name == panelName).ToList();
             if (tryPanels.Count == 0)

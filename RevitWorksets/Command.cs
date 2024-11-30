@@ -34,7 +34,7 @@ namespace RevitWorksets
 
             if (!doc.IsWorkshared)
             {
-                message = "Файл не является файлом совместной работы";
+                message = MyStrings.ErrorFileIsNotWorkshared;
                 Debug.WriteLine("File is not workshared");
                 return Result.Failed; ;
             }
@@ -320,9 +320,9 @@ namespace RevitWorksets
                 t.Commit();
             }
 
-            string msg = $"Обработано элементов: {counter}{Environment.NewLine}Создано рабочих наборов: {newWorksetsCreated}";
+            string msg = $"{MyStrings.MessageElementsProcessed}: {counter}{Environment.NewLine}{MyStrings.MessageWorksetsCreated}: {newWorksetsCreated}";
 
-            BalloonTip.Show("Завершено!", msg);
+            BalloonTip.Show(MyStrings.MessageFinished, msg);
             storage.Save(xmlPath);
             Debug.WriteLine(msg);
             return Result.Succeeded;

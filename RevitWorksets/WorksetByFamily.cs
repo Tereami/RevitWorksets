@@ -21,7 +21,7 @@ namespace RevitWorksets
     {
         public List<string> FamilyNames;
 
-        [DisplayName("Префиксы")]
+        [DisplayName("Prefix")]
         public string FamiliesText
         {
             get
@@ -44,22 +44,22 @@ namespace RevitWorksets
             {
                 new WorksetByFamily
                 {
-                    WorksetName = "Опалубка",
+                    WorksetName = MyStrings.DefaultWorksetConcrete,
                     FamilyNames = new List<string> { "201_", "202_", "204_", "210_", "211_", "220_" }
                 },
                 new WorksetByFamily
                 {
-                    WorksetName = "Гидроизоляция",
+                    WorksetName = MyStrings.DefaultWorksetHydro,
                     FamilyNames = new List<string> { "222_" }
                 },
                 new WorksetByFamily
                 {
-                    WorksetName = "Арматура",
+                    WorksetName = MyStrings.DefaultWorksetRebar,
                     FamilyNames = new List<string> { "261_", "262_", "263_", "264_", "266_" }
                 },
                 new WorksetByFamily
                 {
-                    WorksetName = "Арматура_Выпуски",
+                    WorksetName = MyStrings.DefaultWorksetRebarFreelength,
                     FamilyNames = new List<string> { "265_" }
                 }
             };

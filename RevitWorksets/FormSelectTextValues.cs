@@ -47,6 +47,12 @@ namespace RevitWorksets
                 ResultValues.Add(value);
             }
 
+            if (ResultValues == null || ResultValues.Count == 0)
+            {
+                MessageBox.Show(MyStrings.MessageToCheckboxesChecked);
+                return;
+            }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

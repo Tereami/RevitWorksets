@@ -42,9 +42,9 @@ namespace RevitWorksets
 
             BuildWindow();
 
-            CreateButtonColumn(dataGridViewCategories, "Категории", nameof(WorksetByCategory.CategoriesText), Model.worksetsByCategory);
-            CreateButtonColumn(dataGridViewFamilies, "Семейства", nameof(WorksetByFamily.FamiliesText), Model.worksetsByFamily);
-            CreateButtonColumn(dataGridViewTypes, "Имена типов", nameof(WorksetByType.TypesText), Model.worksetsByType);
+            CreateButtonColumn(dataGridViewCategories, MyStrings.ColumnCategories, nameof(WorksetByCategory.CategoriesText), Model.worksetsByCategory);
+            CreateButtonColumn(dataGridViewFamilies, MyStrings.ColumnFamilies, nameof(WorksetByFamily.FamiliesText), Model.worksetsByFamily);
+            CreateButtonColumn(dataGridViewTypes, MyStrings.ColumnTypes, nameof(WorksetByType.TypesText), Model.worksetsByType);
 
             Debug.WriteLine("Initialized main window");
             flagLinkWorksetEnabled = true;
@@ -110,13 +110,13 @@ namespace RevitWorksets
         {
             if (string.IsNullOrEmpty(XmlPath))
             {
-                toolStripStatusLabel1.Text = "Файл настроек не найден, заданы настройки по умолчанию";
+                toolStripStatusLabel1.Text = MyStrings.ToolStripSettingsFileNotFound;
                 XmlPath = Path.Combine(InfosStorage.GetDefaultStorageFolder(), "worksets.xml");
                 MakeHelpLabelsVisible(true);
             }
             else
             {
-                toolStripStatusLabel1.Text = "Загружено из файла: " + XmlPath;
+                toolStripStatusLabel1.Text = $"{MyStrings.ToolStripLoadedFromFile}: {XmlPath}";
             }
 
 
@@ -201,7 +201,7 @@ namespace RevitWorksets
             XmlPath = dialog.FileName;
             UpdateModel();
             Model.Save(XmlPath);
-            toolStripStatusLabel1.Text = "Сохранено в файл: " + XmlPath;
+            toolStripStatusLabel1.Text = $"{MyStrings.ToolStripSavedToFile}: {XmlPath}";
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
@@ -213,7 +213,7 @@ namespace RevitWorksets
             ReloadTablesDatasource();
             InfosStorage.ClearLastXmlPath();
             MakeHelpLabelsVisible(true);
-            toolStripStatusLabel1.Text = "Настройки сброшены";
+            toolStripStatusLabel1.Text = MyStrings.ToolStripSettingsReset;
             flagLinkWorksetEnabled = true;
         }
 
@@ -242,7 +242,7 @@ namespace RevitWorksets
             }
             else
             {
-                MessageBox.Show("Не выбраны пункты для обработки!");
+                MessageBox.Show(MyStrings.MessageToCheckboxesChecked);
                 return;
             }
         }
@@ -292,7 +292,7 @@ namespace RevitWorksets
             WorksetByFamily clickedRow = Model.worksetsByFamily[rowNumber];
             if (clickedRow.FamilyNames == null) clickedRow.FamilyNames = new List<string>();
 
-            FormSelectTextValues formSelect = new FormSelectTextValues("Задайте префиксы имен семейств", clickedRow.FamilyNames);
+            FormSelectTextValues formSelect = new FormSelectTextValues(MyStrings.FormTitleSetFamilyPrefixes, clickedRow.FamilyNames);
             if (formSelect.ShowDialog() != DialogResult.OK) return;
 
             clickedRow.FamilyNames = formSelect.ResultValues;
@@ -307,7 +307,7 @@ namespace RevitWorksets
             WorksetByType clickedRow = Model.worksetsByType[rowNumber];
             if (clickedRow.TypeNames == null) clickedRow.TypeNames = new List<string>();
 
-            FormSelectTextValues formSelect = new FormSelectTextValues("Задайте префиксы имен типов", clickedRow.TypeNames);
+            FormSelectTextValues formSelect = new FormSelectTextValues(MyStrings.FormTitleSetTypePrefixes, clickedRow.TypeNames);
             if (formSelect.ShowDialog() != DialogResult.OK) return;
 
             clickedRow.TypeNames = formSelect.ResultValues;

@@ -20,7 +20,7 @@ namespace RevitWorksets
 {
     public abstract class WorksetBy
     {
-        [DisplayName("Имя набора")]
+        [DisplayName("Workset name")]
         public string WorksetName { get; set; }
 
         public Workset GetWorkset(Document doc)

@@ -35,13 +35,16 @@ namespace RevitWorksets
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            ReadSelectedRows();
+            bool succeed = ReadSelectedRows();
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (succeed)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
-        private void ReadSelectedRows()
+        private bool ReadSelectedRows()
         {
             SelectedCategories = checkedListBoxCats
                 .CheckedItems
@@ -51,9 +54,10 @@ namespace RevitWorksets
 
             if (SelectedCategories.Count == 0)
             {
-                MessageBox.Show("Не выбраны категории!");
-                return;
+                MessageBox.Show(MyStrings.MessageToCheckboxesChecked);
+                return false;
             }
+            return true;
         }
 
         private void WriteRows(List<RevitCategory> VisibleCategories, List<Autodesk.Revit.DB.BuiltInCategory> SelectedCategories)
