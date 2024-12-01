@@ -160,7 +160,7 @@
     <value>Set type name prefixes</value>
   </data>
   <data name="MessageElementsProcessed" xml:space="preserve">
-    <value>Elements processed:</value>
+    <value>Elements processed</value>
   </data>
   <data name="MessageFinished" xml:space="preserve">
     <value>Finished!</value>
@@ -169,7 +169,7 @@
     <value>No elements checked!</value>
   </data>
   <data name="MessageWorksetsCreated" xml:space="preserve">
-    <value>Created worksets:</value>
+    <value>Created worksets</value>
   </data>
   <data name="PluginName" xml:space="preserve">
     <value>Worksets</value>

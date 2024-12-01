@@ -32,7 +32,7 @@ namespace RevitWorksets
 #if R2017 || R2018 || R2019
                 string cats = revitCategories.Count + " категорий";
 #else
-                string cats = string.Join(", ", revitCategories.Select(i => LabelUtils.GetLabelFor(i)));
+                string cats = string.Join(" ", revitCategories.Select(i => LabelUtils.GetLabelFor(i)));
 #endif
                 return cats;
             }

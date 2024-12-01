@@ -27,7 +27,7 @@ namespace RevitWorksets
             get
             {
                 if (TypeNames == null || TypeNames.Count == 0) return "None";
-                string cats = string.Join(", ", TypeNames);
+                string cats = string.Join(" ", TypeNames);
                 return cats;
             }
         }

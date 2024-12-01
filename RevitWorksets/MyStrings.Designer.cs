@@ -187,7 +187,7 @@ namespace RevitWorksets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Elements processed:.
+        ///   Looks up a localized string similar to Elements processed.
         /// </summary>
         public static string MessageElementsProcessed {
             get {
@@ -214,7 +214,7 @@ namespace RevitWorksets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Created worksets:.
+        ///   Looks up a localized string similar to Created worksets.
         /// </summary>
         public static string MessageWorksetsCreated {
             get {
